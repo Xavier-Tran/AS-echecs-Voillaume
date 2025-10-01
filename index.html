@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club d'Échecs - Lycée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-charcoal text-ivory">
+
+    <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#accueil" class="flex items-center space-x-2">
+                <img src="images/autres/logo-cavalier.png" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
+                <span class="text-xl font-bold text-ivory">AS Échecs</span>
+            </a>
+            <div class="hidden lg:flex space-x-6">
+                <a href="#accueil" class="nav-link text-ivory hover:text-sandy">Accueil</a>
+                <a href="#evenements" class="nav-link text-ivory hover:text-sandy">Événements</a>
+                <a href="#cours" class="nav-link text-ivory hover:text-sandy">Cours</a>
+                <a href="#challenge" class="nav-link text-ivory hover:text-sandy">Challenge</a>
+                <a href="#scores" class="nav-link text-ivory hover:text-sandy">Scores</a>
+                <a href="#elo" class="nav-link text-ivory hover:text-sandy">Progression</a>
+                <a href="bienfaits.html" class="nav-link text-ivory hover:text-sandy">Bienfaits</a>
+            </div>
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-ivory focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 bg-charcoal-light p-2 shadow-lg z-40 rounded-lg border border-ivory/10">
+            <a href="#accueil" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Accueil</a>
+            <a href="#evenements" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Événements</a>
+            <a href="#cours" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Cours</a>
+            <a href="#challenge" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Challenge</a>
+            <a href="#scores" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Scores</a>
+            <a href="#elo" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Progression</a>
+            <a href="bienfaits.html" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Bienfaits</a>
+        </div>
+    </nav>
+
+    <header id="accueil" class="relative overflow-hidden">
+        <div class="container mx-auto px-6 py-20 md:py-32 relative z-10 text-center flex flex-col items-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-sandy leading-tight mb-4">Bienvenue à l'AS Club Échecs !</h1>
+            <p class="text-lg md:text-xl text-ivory max-w-2xl mx-auto mb-8">Développez votre esprit stratégique, rencontrez des passionnés et participez à nos événements.</p>
+            <a href="#challenge" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">Challenge de la semaine!</a>
+        </div>
+    </header>
+
+    <section id="evenements" class="py-16 bg-charcoal">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
+        <h3 class="text-2xl font-bold text-sandy mb-4">Inscriptions</h3>
+        <p class="text-ivory/90 mb-4">
+          L'inscription à l'AS se fait auprès de M. Tran ou de n'importe quel enseignant d'EPS. Seulement 20€ à l'année pour participer à toutes les activités !
+        </p>
+        <img src="images/autres/groupe_pizza.webp" alt="Cours d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
+        <p class="text-sm text-ivory">Lieu : Foyer des élèves</p>
+      </div>
+      
+      <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
+        <h3 class="text-2xl font-bold text-sandy mb-4">Jeu Libre</h3>
+        <p class="text-ivory/90 mb-4">
+          Nos sessions de jeu libre sont l'endroit parfait pour pratiquer, apprendre et jouer aux échecs pour le plaisir. C'est l'occasion de faire des parties amicales, d'analyser vos coups et de progresser à votre rythme.
+        </p>
+        <img src="images/autres/cours_groupe.webp" alt="Cours d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
+        <p class="text-sm text-ivory">Lieu : Foyer des élèves</p>
+      </div>
+      
+      <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
+        <h3 class="text-2xl font-bold text-sandy mb-4">Tournoi Du Lycée</h3>
+        <p class="text-ivory/90 mb-4">
+          Qui seront les prochains champions d'échecs du lycée ? Venez tester vos stratégies et affronter vos camarades dans une compétition amicale mais intense.
+        </p>
+        <img src="images/autres/tournoi.webp" alt="Tournoi d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <p class="text-sm text-ivory">Date : A venir</p>
+        <p class="text-sm text-ivory">Lieu : Salle E</p>
+      </div>
+      </div>
+    </section>
+
+    <section id="cours" class="py-16 bg-charcoal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Apprendre & Progresser</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Débutants</h3><a href="cours_debutants.html"><img src="images/autres/cours_fille_1.webp" alt="Cours pour débutants" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Cliquez sur l'image pour découvrir les leçons fondamentales : mouvements, règles et stratégies de base.</p></div>
+          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Confirmés</h3><a href="cours_confirmes.html"><img src="images/autres/cours_fille_2.webp" alt="Cours pour confirmés" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Cliquez sur l'image pour passer au niveau supérieur avec des cours sur les ouvertures, les tactiques et les finales.</p></div>
+        </div>
+      </div>
+    </section>
+  
+<section id="challenge" class="py-16 bg-charcoal-light">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Challenge de la Semaine</h2>
+        <div class="flex flex-col items-center p-6 bg-charcoal rounded-xl shadow-lg">
+            
+            <h3 id="challenge-title" class="text-2xl font-bold text-sandy mb-4 text-center"></h3>
+            
+            <img id="challenge-image" src="" alt="Diagramme d'échecs" class="rounded-lg mb-6 w-full md:w-2/3 object-cover" />
+            
+            <button id="solution-button" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">
+                Afficher la solution
+            </button>
+            
+            <div id="solution-box" class="hidden mt-6 p-4 border-2 border-sandy rounded-lg text-ivory w-full md:w-2/3">
+                <h4 class="text-xl font-semibold mb-2 text-sandy">Solution :</h4>
+                
+                <p id="challenge-solution-text" class="mb-4"></p>
+                
+                <img id="challenge-solution-image" src="" alt="Diagramme de la solution" class="rounded-lg w-full" />
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="scores" class="py-16 bg-charcoal-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Classements & Scores</h2>
+            <div class="bg-charcoal rounded-xl shadow-lg p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto">
+                        <thead>
+                            <tr class="bg-sandy text-charcoal rounded-xl">
+                                <th class="py-3 px-4 rounded-tl-lg">Classement</th><th class="py-3 px-4">Prénom</th><th class="py-3 px-4">Nom</th>
+                                <th class="py-3 px-4">Élo V.</th><th class="py-3 px-4">Classe</th><th class="py-3 px-4 rounded-tr-lg">Rang</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <section id="elo" class="py-16 bg-charcoal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Profil du Joueur</h2>
+        <div class="flex flex-col md:flex-row items-center justify-center mb-12 space-y-4 md:space-y-0 md:space-x-4">
+          <label for="student-select" class="text-xl text-ivory">Sélectionnez un joueur ou une joueuse :</label>
+          <select id="student-select" class="bg-charcoal text-ivory border-2 border-sandy rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-sandy"></select>
+        </div>
+        <div class="space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div id="player-stats-kpi" class="bg-charcoal-light rounded-xl p-6 shadow-lg grid grid-cols-2 gap-y-6 gap-x-4 items-center">
+              <div class="col-span-2 text-center mb-4">
+                <div class="text-lg font-bold text-sandy">Rang Actuel</div>
+                <div class="text-4xl font-bold text-ivory mt-1"><span id="stat-rank">--</span></div>
+              </div>
+              <div class="grid grid-cols-2 gap-8">
+                
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-sandy"><span id="stat-total-games">--</span></div>
+                  <div class="text-sm text-ivory/80">Parties</div>
+                </div>
+                
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-sandy"><span id="stat-win-rate">--</span>%</div>
+                  <div class="text-sm text-ivory/80">Victoires</div>
+                </div>
+                
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-sandy"><span id="stat-best-elo">--</span></div>
+                  <div class="text-sm text-ivory/80">Meilleur Élo</div>
+                </div>
+                
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-sandy"><span id="stat-current-streak">--</span></div>
+                  <div class="text-sm text-ivory/80">Série Actuelle</div>
+                </div>
+
+              </div>
+               <div class="col-span-2 border-t border-ivory/20 mt-4 pt-4 flex justify-around">
+                <div class="text-center"><div class="font-bold text-xl" style="color: #cd7f32;"><span id="stat-badge-bronze">--</span></div><div class="text-xs text-ivory/60">Bronze</div></div>
+                <div class="text-center"><div class="font-bold text-xl" style="color: #c0c0c0;"><span id="stat-badge-silver">--</span></div><div class="text-xs text-ivory/60">Argent</div></div>
+                <div class="text-center"><div class="font-bold text-xl" style="color: #ffd700;"><span id="stat-badge-gold">--</span></div><div class="text-xs text-ivory/60">Or</div></div>
+                <div class="text-center"><div class="font-bold text-xl" style="color: #e5e4e2;"><span id="stat-badge-platinum">--</span></div><div class="text-xs text-ivory/60">Platine</div></div>
+              </div>
+            </div>
+            <div class="bg-charcoal-light rounded-xl p-6 shadow-lg min-h-[250px] relative">
+              <canvas id="results-chart"></canvas>
+            </div>
+          </div>
+          <div>
+            <button class="accordion-trigger w-full text-left text-2xl font-bold text-sandy hover:text-ivory transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+              <span>🏆 Badges Débloqués</span>
+              <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+            </button>
+            <div id="badge-accordion-content" class="accordion-content hidden p-6 bg-charcoal rounded-b-lg"></div>
+          </div>
+          <div class="relative bg-charcoal-light rounded-xl p-4 md:p-8 shadow-inner min-h-[400px]">
+            <canvas id="elo-chart" aria-label="Graphique de progression ELO"></canvas>
+          </div>
+          <div class="bg-charcoal-light rounded-xl p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-sandy mb-4">Matchs Récents</h3>
+            <ul id="recent-matches-list" class="space-y-3"></ul>
+          </div>
+          <div id="player-trophies-container" class="bg-charcoal-light rounded-xl p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-sandy mb-4">Trophées & Moments Clés 🏆</h3>
+            <div id="player-trophies-content" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-charcoal-light text-ivory text-center py-6 mt-12">
+        <div class="space-y-2">
+            <p>&copy; 2025 AS Club Échecs du Lycée Voillaume. Tous droits réservés.</p>
+            <p class="text-sm text-ivory/70">
+                <a href="politique-confidentialite.html" class="hover:underline hover:text-sandy">Politique de confidentialité</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

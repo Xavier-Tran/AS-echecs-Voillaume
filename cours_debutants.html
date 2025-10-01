@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cours Débutants - Club d'Échecs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-charcoal text-ivory">
+
+    <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="images/autres/logo-cavalier.png" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
+                <span class="text-xl font-bold text-ivory">AS Échecs</span>
+            </a>
+            <div>
+                <a href="index.html#cours" class="nav-link text-ivory hover:text-sandy">Retour aux Cours</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-sandy text-center mb-12">Leçons pour Débutants</h1>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Les pièces</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Chaque pièce a une valeur et une façon unique de se déplacer. Maîtriser ces bases est la première étape !</p>
+                        
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>Le Pion (1 point) :</strong> Il avance d'une case vers l'avant (il peut avancer de deux sur son premier coup) et capture en diagonale.
+                            </li>
+                            <li>
+                                <strong>Le Cavalier (3 points) :</strong> Il se déplace en "L" (deux cases dans une direction, puis une sur le côté) et peut sauter par-dessus les autres pièces.
+                            </li>
+                            <li>
+                                <strong>Le Fou (3 points) :</strong> Il se déplace uniquement en diagonale.
+                            </li>
+                            <li>
+                                <strong>La Tour (5 points) :</strong> Elle se déplace en ligne droite, horizontalement ou verticalement.
+                            </li>
+                            <li>
+                                <strong>La Dame (9 points) :</strong> La pièce la plus puissante. Elle se déplace en ligne droite dans toutes les directions (horizontalement, verticalement et en diagonale).
+                            </li>
+                            <li>
+                                <strong>Le Roi (valeur inestimable) :</strong> Il se déplace d'une seule case dans n'importe quelle direction. Le protéger est l'objectif du jeu !
+                            </li>
+                        </ul>
+
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-3 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/pion.webp" alt="Déplacement du pion" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/cavalier.webp" alt="Déplacement du cavalier" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/fou.webp" alt="Déplacement du fou" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/tour.webp" alt="Déplacement de la tour" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/dame.webp" alt="Déplacement de la dame" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/roi.webp" alt="Déplacement du roi" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Le roque</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Le roque est un coup spécial pour mettre votre Roi à l'abri. Si ni le Roi ni la Tour n'ont bougé, et que l'espace est libre entre eux, vous pouvez déplacer le Roi de deux cases vers la Tour, et placer la Tour de l'autre côté du Roi.</p>
+                        
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>Le petit roque :</strong> Le roi se déplace de deux cases de son côté (aile roi).
+                            </li>
+                            <li>
+                                <strong>Le grand roque :</strong> Le roi se déplace de deux cases du côté de l'aile dame.
+                            </li>
+                            <li>
+                                <strong>Attention :</strong> Le roi ne peut pas roquer lorsqu'il est en échec et ne peut pas non plus le faire s'il devait passer sur une case où il serait en échec.
+                            </li>
+                        </ul>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/roque1 (1).webp" alt="Petit roque" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/roque2.webp" alt="Grand roque" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>La prise en passant</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>C'est une règle de capture spéciale pour les pions. Si un pion adverse sur sa case de départ avance de deux cases et se retrouve juste à côté de votre pion, vous avez le droit, uniquement au coup suivant, de le capturer comme s'il n'avait avancé que d'une seule case.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/prise_passant1.webp" alt="Prise en passant 1" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/prise_passant2.webp" alt="Prise en passant 2" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/prise_passant3.webp" alt="Prise en passant 3" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Échec, échec et mat</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Le Roi est en échec lorsqu'il est attaqué par une pièce adverse (image 1). Pour parer l'échec (image 2), vous devez soit bouger le Roi, bloquer l'attaque, ou capturer la pièce attaquante. S'il n'existe aucun coup légal pour sortir de l'échec (image 3), c'est échec et mat, et la partie est gagnée !</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/echec1.webp" alt="Échec 1" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/echecs2.webp" alt="Échec 2" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/echec_mat.webp" alt="Échec et mat" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>La promotion</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Lorsqu'un pion réussit à traverser tout l'échiquier pour atteindre la dernière rangée, il obtient une promotion ! Il doit être immédiatement remplacé par une Dame, une Tour, un Fou ou un Cavalier de sa couleur.</p>
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>La dame :</strong> promotion.
+                            </li>
+                            <li>
+                                <strong>La tour, le fou ou le cavalier :</strong> sous-promotion.
+                            </li>
+                        </ul>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/promotion1.webp" alt="Promotion 1" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/promotion2.webp" alt="Promotion 2" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>La partie nulle</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Une partie ne se termine pas toujours par une victoire. Elle peut être "nulle" si les joueurs se mettent d'accord, il n'y a plus assez de matériel pour gagner, par répétition de la même position trois fois, ou par Pat (quand un joueur, ici les noirs, n'est pas en échec mais ne peut jouer aucun coup légal).</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/pat.webp" alt="Pat" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Les 3 moments d'une partie</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Une partie d'échecs se divise en trois grandes phases :</p>
+                        
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>L'ouverture :</strong> On développe ses pièces et on protège son roi.
+                            </li>
+                            <li>
+                                <strong>Le milieu de partie :</strong> On met en place des stratégies et des échanges tactiques.
+                            </li>
+                            <li>
+                                <strong>La finale :</strong> Il reste peu de pièce, le roi doit participer au combat.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Les 3 principes de l'ouverture</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Pour bien commencer une partie, suivez trois règles d'or :</p>
+                        
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>1 :</strong> On contrôle le centre (généralement en jouant le pion en e4 ou d4).
+                            </li>
+                            <li>
+                                <strong>2 :</strong> On développe ses pièces mineures (cavaliers et fous) vers le centre.
+                            </li>
+                            <li>
+                                <strong>3 :</strong> On met son roi à l'abri en roquant.
+                            </li>
+                            <li>
+                                <strong>Bonus :</strong> un 4ème principe serait de ne pas sortir sa dame trop tôt. L'adversaire pourrait profiter en développant ses pièces et en attaquant la dame. Cela ralentirait beaucoup votre propre développement.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Ton adversaire a joué, que faire ?</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Après chaque coup de votre adversaire, analysez la position en vous posant trois questions (dans cet ordre) : y a-t-il des Échecs possibles ? Y a-t-il des Captures intéressantes ? Y a-t-il des Menaces que je peux créer ? Cette méthode vous aidera à trouver les meilleurs coups.</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>Le clouage</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Le clouage est une tactique où une pièce attaquante (Tour, Fou ou Dame) empêche une pièce adverse de bouger, car une pièce de plus grande valeur (souvent le Roi ou la Dame) se trouve derrière elle sur la même ligne. Ici le cavalier noir ne peut pas bouger car la tour attaquerait le roi.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/clouage.webp" alt="Clouage" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>La fourchette</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>La fourchette est une tactique où une seule de vos pièces attaque deux ou plusieurs pièces adverses en même temps. Le Cavalier est le spécialiste des fourchettes, menaçant plusieurs pièces à la fois grâce à son mouvement unique. Ici, la cavalier blanc attaque à la fois le roi noir et la tour noire.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/fourchette.webp" alt="Fourchette" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>L'enfilade</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>L'enfilade est le "clouage inversé". On attaque une pièce de grande valeur pour la forcer à se déplacer, ce qui expose une pièce de moindre valeur qui se trouvait derrière elle et qui peut maintenant être capturée. Ici, la dame noire est attaquée par la tour blanche. Losrqu'elle bougera, la tour noire en h8 sera capturée.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/enfilade.webp" alt="Enfilade" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>L'attaque à la découverte</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Cette tactique se produit lorsqu'une de vos pièces bouge et libère l'attaque d'une autre de vos pièces (Dame, Tour ou Fou) qui se trouvait derrière elle. L'effet de surprise est souvent dévastateur. Lorsque le fou blanc bougera en b6, la dame blanche attaquera le roi noir, l'obligeant à bouger. Le fou blanc capturera la dame noire au prochain coup.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/echecs_decouverte.webp" alt="Échec à la découverte" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>L'échec double</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>C'est le type d'attaque à la découverte le plus puissant. La pièce qui se déplace met le Roi en échec, et la pièce qu'elle découvre met aussi le Roi en échec en même temps ! La seule réponse possible est de bouger le Roi.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/echec_double1.webp" alt="Échec double 1" class="rounded-lg">
+                                </div>
+                                <div class="text-center">
+                                    <img src="images/lecons/debutants/echec_double2.webp" alt="Échec double 2" class="rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>L'enfermement des pièces</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p>Cette stratégie consiste à limiter les mouvements d'une pièce adverse jusqu'à ce qu'elle soit piégée, sans aucune case de fuite. Une pièce enfermée est souvent une pièce perdue. Le cavalier ne peut faire aucun mouvement sans que le fou blanc ne le capture.</p>
+                        <div class="border-t border-ivory/20 mt-6 pt-4">
+                            <div class="text-center">
+                                <img src="images/lecons/debutants/enfermement.webp" alt="Enfermement" class="rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="index.html" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">
+                    Retour à l'accueil
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-charcoal-light text-ivory text-center py-6 mt-12">
+        <div class="space-y-2">
+            <p>&copy; 2025 AS Club Échecs du Lycée Voillaume. Tous droits réservés.</p>
+            <p class="text-sm text-ivory/70">
+                <a href="politique-confidentialite.html" class="hover:underline hover:text-sandy">Politique de confidentialité</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
