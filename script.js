@@ -5,10 +5,19 @@
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
   { fullName: "Jean Neba", classe: "TG4" },
-  { fullName: "Xavier Tran", classe: "Enseignant", startElo: 1773 },
+  { fullName: "Xavier Tran", classe: "Enseignant", startElo: 1773, isPrivate: true },
   { fullName: "El-Amir Ali", classe: "1G1" },
   { fullName: "Rayan Benzenati", classe: "1G1" },
   { fullName: "Razvan Craciun", classe: "TG7" },
+  { fullName: "Hugo Tokiniaina-Nazim", classe: "1G1" },
+  { fullName: "Mahmoud Ait-Ouaret", classe: "1STI2D2" },
+  { fullName: "Adama Basse", classe: "1TSCRSA" },
+  { fullName: "Paul-Noah Mondelice", classe: "1TSCRSA" },
+  { fullName: "Ryan Stary", classe: "1TSCRSA" },
+  { fullName: "Soufian Bouaziz", classe: "1G7" },
+  { fullName: "Mohamed-Adam Haouhaou", classe: "1G1" },
+  { fullName: "Rémi Courouble", classe: "Enseignant", startElo: 1299 },
+  { fullName: "Brian Phrakousonh", classe: "Enseignant", startElo: 1299 },
 ];
 
 // === HISTORIQUE DES MATCHS ===
@@ -53,7 +62,7 @@ const WEEKLY_CHALLENGES = [
     {
         title: "Les Noirs jouent et gagnent du matériel.",
         image: "images/enigmes/challenge_1.jpg",
-        solutionText: "1. ... Txh3+<br />2. Rg1 Tg3!<br />3. Dxg3 (sacrifice de la Dame pour éviter le mat)",
+        solutionText: "1. ... Txh3+<br />2. Rg1 Tg3!<br />3. Dxg3 ... (sacrifice de la Dame pour éviter le mat)",
         solutionImage: "images/enigmes/challenge_1_solution.jpg"
     },
     {
@@ -63,10 +72,40 @@ const WEEKLY_CHALLENGES = [
         solutionImage: "images/enigmes/challenge_2_solution.jpg"
     },
     {
-        title: "Les Blancs jouent et trouvent une fourchette gagnante.",
-        image: "images/enigmes/fourchette_challenge.jpg",
-        solutionText: "1. Cg6+ ! Ce coup force le Roi à bouger et permet de capturer la Tour.",
-        solutionImage: "images/enigmes/fourchette_challenge_solution.jpg"
+        title: "Les Blancs jouent et gagnent en 2 coups.",
+        image: "images/enigmes/challenge_3.jpg",
+        solutionText: "1. Ta6 ... (seul coup qui gagne).<br />1. ... bxa6<br />.2. b7#",
+        solutionImage: "images/enigmes/challenge_3_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent gagnent en 1 coup.",
+        image: "images/enigmes/challenge_4.jpg",
+        solutionText: "1. O-O-O# (grand roque)",
+        solutionImage: "images/enigmes/challenge_4_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 4 coups.",
+        image: "images/enigmes/challenge_5.jpg",
+        solutionText: "1. Dxd7+ Rxd7 (si Rf8, Dxe7#)<br />2. Ff5+ Re8 (si Rc6, Fd7#)<br />3. Fd7+ Rf8 (ou Rd8)<br />4. Fxe7#",
+        solutionImage: "images/enigmes/challenge_5_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_6.jpg",
+        solutionText: "1. Dg8+ Txg8<br />2.Cxf7+ Rg7<br />3.Fh6#",
+        solutionImage: "images/enigmes/challenge_6_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_7.jpg",
+        solutionText: "1. Db6+ Fxb6<br />2. axb6 Rxb6<br />3. Fe3#",
+        solutionImage: "images/enigmes/challenge_7_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent gagnent en 2 coups.",
+        image: "images/enigmes/challenge_8.jpg",
+        solutionText: "1. Dxf5+ exf5<br />2. Tg8#",
+        solutionImage: "images/enigmes/challenge_8_solution.jpg"
     }
 ];
 
@@ -258,17 +297,24 @@ function displayPlayerProfile(player) {
 }
 
 function updateLeaderboardDisplay() {
-  joueurs.sort((a, b) => b.elo - a.elo);
   const tableBody = document.querySelector('#leaderboard-body');
-  if (tableBody) {
-    tableBody.innerHTML = '';
-    joueurs.forEach((joueur, index) => {
-      const nameClass = (index + 1) === 1 ? 'text-sandy font-semibold' : 'text-ivory';
-      const rang = getRankFromElo(joueur.elo);
-      const playerRow = `<tr class="border-b border-ivory/20"><td class="py-4 px-4 text-ivory">${index + 1}</td><td class="py-4 px-4 ${nameClass}">${joueur.prenom}</td><td class="py-4 px-4 ${nameClass}">${joueur.nom}</td><td class="py-4 px-4 text-ivory">${joueur.elo}</td><td class="py-4 px-4 text-ivory">${joueur.classe}</td><td class="py-4 px-4 text-ivory">${rang}</td></tr>`;
-      tableBody.innerHTML += playerRow;
-    });
-  }
+  if (!tableBody) return;
+
+  // 👇 LIGNE AJOUTÉE : On crée une nouvelle liste qui exclut les joueurs privés.
+  const publicJoueurs = joueurs.filter(joueur => !joueur.isPrivate);
+
+  // On trie cette nouvelle liste de joueurs publics par Élo.
+  publicJoueurs.sort((a, b) => b.elo - a.elo);
+  
+  tableBody.innerHTML = '';
+  // On utilise maintenant la liste "publicJoueurs" pour afficher le tableau.
+  publicJoueurs.forEach((joueur, index) => {
+    const nameClass = (index + 1) === 1 ? 'text-sandy font-semibold' : 'text-ivory';
+    const rang = getRankFromElo(joueur.elo);
+    // Le classement (index + 1) est maintenant basé sur la liste publique.
+    const playerRow = `<tr class="border-b border-ivory/20"><td class="py-4 px-4 text-ivory">${index + 1}</td><td class="py-4 px-4 ${nameClass}">${joueur.prenom}</td><td class="py-4 px-4 ${nameClass}">${joueur.nom}</td><td class="py-4 px-4 text-ivory">${joueur.elo}</td><td class="py-4 px-4 text-ivory">${joueur.classe}</td><td class="py-4 px-4 text-ivory">${rang}</td></tr>`;
+    tableBody.innerHTML += playerRow;
+  });
 }
 
 function refreshUI() {

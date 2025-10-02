@@ -11,9 +11,9 @@
 <body class="bg-charcoal text-ivory">
 
     <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-6 py-1 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2">
-                <img src="images/autres/logo-cavalier.png" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
+                <img src="images/autres/Logo.png" alt="Logo Club d'Échecs" class="rounded-full w-20 h-20" />
                 <span class="text-xl font-bold text-ivory">AS Échecs</span>
             </a>
             <div>
@@ -339,8 +339,35 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <button class="accordion-trigger w-full text-left text-xl text-ivory hover:text-sandy transition-colors p-4 bg-charcoal-light rounded-lg flex justify-between items-center">
+                        <span>La notation</span>
+                        <span class="accordion-icon text-sandy font-bold text-2xl">+</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 bg-charcoal rounded-b-lg">
+                        <p class="mb-4">Pour noter une partie ou pour l'étudier, il est essentiel de connaître la notation :</p>
+                        
+                        <ul class="list-disc list-inside space-y-3 text-ivory">
+                            <li>
+                                <strong>Roi/Dame/Tour/Cavalier/Fou :</strong> R/D/T/C/F
+                            </li>
+                            <li>
+                                <strong>Échec/échec double/échec et mat :</strong> +/++/#
+                            </li>
+                            <li>
+                                <strong>Prise/prise en passant/promotion :</strong> x/e.p./: (ou =)
+                            </li>
+                            <li>
+                                <strong>Petit roque/grand roque :</strong> O-O/O-O-O
+                            </li>
+                            <li>
+                                <strong>Bon coup/mauvais coup/coup intéressant/coup douteux :</strong> !/?/!?/?!
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="mt-12 text-center">
+                <div class="mt-12 text-center">
                 <a href="index.html" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">
                     Retour à l'accueil
                 </a>

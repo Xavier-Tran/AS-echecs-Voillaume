@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Club d'Échecs - Lycée</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-charcoal text-ivory">
 
     <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-6 py-1 flex justify-between items-center">
             <a href="#accueil" class="flex items-center space-x-2">
-                <img src="images/autres/logo-cavalier.png" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
+                <img src="images/autres/Logo.png" alt="Logo Club d'Échecs" class="rounded-full w-20 h-20" />
                 <span class="text-xl font-bold text-ivory">AS Échecs</span>
             </a>
             <div class="hidden lg:flex space-x-6">
@@ -44,23 +46,23 @@
 
     <header id="accueil" class="relative overflow-hidden">
         <div class="container mx-auto px-6 py-20 md:py-32 relative z-10 text-center flex flex-col items-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-sandy leading-tight mb-4">Bienvenue à l'AS Club Échecs !</h1>
-            <p class="text-lg md:text-xl text-ivory max-w-2xl mx-auto mb-8">Développez votre esprit stratégique, rencontrez des passionnés et participez à nos événements.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-sandy leading-tight mb-4">AS Club Échecs</h1>
+            <p class="text-lg md:text-xl text-ivory max-w-2xl mx-auto mb-8">L'imagination est notre sport.</p>
             <a href="#challenge" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">Challenge de la semaine!</a>
         </div>
     </header>
 
     <section id="evenements" class="py-16 bg-charcoal">
+    <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Nos Événements</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
         <h3 class="text-2xl font-bold text-sandy mb-4">Inscriptions</h3>
         <p class="text-ivory/90 mb-4">
-          L'inscription à l'AS se fait auprès de M. Tran ou de n'importe quel enseignant d'EPS. Seulement 20€ à l'année pour participer à toutes les activités !
+          L'inscription se fait auprès de M. Tran ou de n'importe quel enseignant d'EPS. Seulement 20€ à l'année pour participer à toutes les activités !
         </p>
-        <img src="images/autres/groupe_pizza.webp" alt="Cours d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <img src="images/autres/groupe_pizza.webp" alt="Inscriptions" class="rounded-lg mb-4 w-full object-cover" />
         <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
-        <p class="text-sm text-ivory">Lieu : Foyer des élèves</p>
+        <p class="text-sm text-ivory">Lieu : Foyer des élèves, RdC bâtiment C</p>
       </div>
       
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
@@ -68,17 +70,17 @@
         <p class="text-ivory/90 mb-4">
           Nos sessions de jeu libre sont l'endroit parfait pour pratiquer, apprendre et jouer aux échecs pour le plaisir. C'est l'occasion de faire des parties amicales, d'analyser vos coups et de progresser à votre rythme.
         </p>
-        <img src="images/autres/cours_groupe.webp" alt="Cours d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <img src="images/autres/cours_groupe.webp" alt="Jeu libre" class="rounded-lg mb-4 w-full object-cover" />
         <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
-        <p class="text-sm text-ivory">Lieu : Foyer des élèves</p>
+        <p class="text-sm text-ivory">Lieu : Foyer des élèves, RdC bâtiment C</p>
       </div>
       
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
-        <h3 class="text-2xl font-bold text-sandy mb-4">Tournoi Du Lycée</h3>
+        <h3 class="text-2xl font-bold text-sandy mb-4">Tournoi Du Lycée: 3ème édition</h3>
         <p class="text-ivory/90 mb-4">
           Qui seront les prochains champions d'échecs du lycée ? Venez tester vos stratégies et affronter vos camarades dans une compétition amicale mais intense.
         </p>
-        <img src="images/autres/tournoi.webp" alt="Tournoi d'échecs" class="rounded-lg mb-4 w-full object-cover" />
+        <img src="images/autres/tournoi.webp" alt="Tournoi" class="rounded-lg mb-4 w-full object-cover" />
         <p class="text-sm text-ivory">Date : A venir</p>
         <p class="text-sm text-ivory">Lieu : Salle E</p>
       </div>
@@ -89,8 +91,8 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Apprendre & Progresser</h2>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Débutants</h3><a href="cours_debutants.html"><img src="images/autres/cours_fille_1.webp" alt="Cours pour débutants" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Cliquez sur l'image pour découvrir les leçons fondamentales : mouvements, règles et stratégies de base.</p></div>
-          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Confirmés</h3><a href="cours_confirmes.html"><img src="images/autres/cours_fille_2.webp" alt="Cours pour confirmés" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Cliquez sur l'image pour passer au niveau supérieur avec des cours sur les ouvertures, les tactiques et les finales.</p></div>
+          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Débutants</h3><a href="cours_debutants.html"><img src="images/autres/cours_fille_1.webp" alt="Cours pour débutants" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Découvrez l'univers captivant des échecs. Apprenez les règles, le mouvement des pièces et les stratégies de base pour bien démarrer. Faites votre premier pas sur l'échiquier et lancez-vous dans l'aventure !</p></div>
+          <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy"><h3 class="text-2xl font-bold text-sandy mb-4">Pour les Confirmés</h3><a href="cours_confirmes.html"><img src="images/autres/cours_fille_2.webp" alt="Cours pour confirmés" class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto hover:opacity-80 transition-opacity" /></a><p class="text-ivory mb-4">Affinez votre jeu et approfondissez vos connaissances avec des tactiques plus complexes qui feront souvent la différence.</p></div>
         </div>
       </div>
     </section>
