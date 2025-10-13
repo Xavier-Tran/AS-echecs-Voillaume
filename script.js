@@ -22,12 +22,9 @@ const roster = [
 
 // === HISTORIQUE DES MATCHS ===
 const matches = [
-  { "id": 1, "date": "2025-01-10", "player1": "Alice Dubois", "player2": "Lucas Moreau", "result": "win" },
-  { "id": 2, "date": "2025-01-12", "player1": "Jean Dupont", "player2": "Marie Lefèvre", "result": "win" },
-  { "id": 3, "date": "2025-01-14", "player1": "Thomas Martin", "player2": "Léa Garcia", "result": "draw" },
-  { "id": 4, "date": "2025-01-16", "player1": "Hugo Bernard", "player2": "Manon Laurent", "result": "loss" },
-  { "id": 5, "date": "2025-01-18", "player1": "Chloé Petit", "player2": "Arthur Roux", "result": "win" },
-  { "id": 6, "date": "2025-10-20", "player1": "Arthur Roux", "player2": "Xavier Tran", "result": "win" }
+  { "id": 1, "date": "2025-10-13", "player1": "Adama Basse", "player2": "Paul-Noah Mondelice", "result": "win" },
+  { "id": 2, "date": "2025-10-13", "player1": "El-Amir", "player2": "Jean Neba", "result": "win" },
+  { "id": 3, "date": "2025-10-13", "player1": "Paul-Noah Mondelice", "player2": "Ryan Stary", "result": "win" },
 ];
 
 let joueurs = [];
