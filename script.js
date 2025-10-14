@@ -4,20 +4,20 @@
 
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
-  { fullName: "Jean Neba", statut: "Élève" },
-  { fullName: "Xavier Tran", statut: "Enseignant", startElo: 1773, isPrivate: true },
-  { fullName: "El-Amir Ali", statut: "Élève" },
-  { fullName: "Rayan Benzenati", statut: "Élève" },
-  { fullName: "Razvan Craciun", statut: "Élève" },
-  { fullName: "Hugo Tokiniaina-Nazim", statut: "Élève" },
-  { fullName: "Mahmoud Ait-Ouaret", statut: "Élève" },
-  { fullName: "Adama Basse", statut: "Élève" },
-  { fullName: "Paul-Noah Mondelice", statut: "Élève" },
-  { fullName: "Ryan Stary", statut: "Élève" },
-  { fullName: "Soufian Bouaziz", statut: "Élève" },
-  { fullName: "Mohamed-Adam Haouhaou", statut: "Élève" },
-  { fullName: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },
-  { fullName: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "Jean Neba", statut: "Élève" },
+  { pseudo: "Xavier Tran", statut: "Enseignant", startElo: 1773, isPrivate: true },
+  { pseudo: "El-Amir Ali", statut: "Élève" },
+  { pseudo: "Rayan Benzenati", statut: "Élève" },
+  { pseudo: "Razvan Craciun", statut: "Élève" },
+  { pseudo: "Hugo Tokiniaina-Nazim", statut: "Élève" },
+  { pseudo: "Mahmoud Ait-Ouaret", statut: "Élève" },
+  { pseudo: "Adama Basse", statut: "Élève" },
+  { pseudo: "Paul-Noah Mondelice", statut: "Élève" },
+  { pseudo: "Ryan Stary", statut: "Élève" },
+  { pseudo: "Soufian Bouaziz", statut: "Élève" },
+  { pseudo: "Mohamed-Adam Haouhaou", statut: "Élève" },
+  { pseudo: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },
 ];
 
 // === HISTORIQUE DES MATCHS ===
@@ -127,16 +127,16 @@ function processAllMatches() {
     joueurs = roster.map(membre => {
         const startingElo = membre.startElo || ELO_INITIAL;
         return { 
-            prenom: membre.fullName.split(' ')[0] || membre.fullName, nom: membre.fullName.split(' ')[1] || '', 
-            fullName: membre.fullName, classe: membre.statut, elo: startingElo, 
+            prenom: membre.pseudo.split(' ')[0] || membre.pseudo, nom: membre.pseudo.split(' ')[1] || '', 
+            pseudo: membre.pseudo, classe: membre.statut, elo: startingElo, 
             eloHistory: [{ date: "Début", elo: startingElo }], isPrivate: membre.isPrivate || false,
             isChampion: membre.isChampion || false
         };
     });
     const sortedMatches = [...matches].sort((a, b) => new Date(a.date) - new Date(b.date));
     sortedMatches.forEach(match => {
-        const joueurA = joueurs.find(j => j.fullName === match.player1);
-        const joueurB = joueurs.find(j => j.fullName === match.player2);
+        const joueurA = joueurs.find(j => j.pseudo === match.player1);
+        const joueurB = joueurs.find(j => j.pseudo === match.player2);
         if (!joueurA || !joueurB) return;
         let scoreA = match.result === 'win' ? 1 : (match.result === 'draw' ? 0.5 : 0);
         const oldEloA = joueurA.elo;
@@ -148,12 +148,12 @@ function processAllMatches() {
     });
 }
 
-function calculatePlayerStats(playerFullName) {
-    const playerMatches = matches.filter(m => m.player1 === playerFullName || m.player2 === playerFullName).sort((a, b) => new Date(a.date) - new Date(b.date));
+function calculatePlayerStats(playerpseudo) {
+    const playerMatches = matches.filter(m => m.player1 === playerpseudo || m.player2 === playerpseudo).sort((a, b) => new Date(a.date) - new Date(b.date));
     let wins = 0, losses = 0, draws = 0, currentStreak = 0, maxStreak = 0, streakCounter = 0;
     let opponents = {};
     playerMatches.forEach(m => {
-        const isPlayer1 = m.player1 === playerFullName;
+        const isPlayer1 = m.player1 === playerpseudo;
         const opponentName = isPlayer1 ? m.player2 : m.player1;
         opponents[opponentName] = (opponents[opponentName] || 0) + 1;
         const won = (isPlayer1 && m.result === 'win') || (!isPlayer1 && m.result === 'loss');
@@ -162,12 +162,12 @@ function calculatePlayerStats(playerFullName) {
         else { losses++; streakCounter = 0; }
         if (streakCounter > maxStreak) maxStreak = streakCounter;
     });
-    for (let i = playerMatches.length - 1; i >= 0; i--) { const m = playerMatches[i]; const won = (m.player1 === playerFullName && m.result === 'win') || (m.player2 === playerFullName && m.result === 'loss'); if (won) { currentStreak++; } else { break; } }
+    for (let i = playerMatches.length - 1; i >= 0; i--) { const m = playerMatches[i]; const won = (m.player1 === playerpseudo && m.result === 'win') || (m.player2 === playerpseudo && m.result === 'loss'); if (won) { currentStreak++; } else { break; } }
     
     const totalGames = playerMatches.length;
     const winRate = totalGames > 0 ? Math.round((wins / totalGames) * 100) : 0;
     const advantage = wins - losses;
-    const playerData = joueurs.find(j => j.fullName === playerFullName);
+    const playerData = joueurs.find(j => j.pseudo === playerpseudo);
     const bestElo = playerData ? Math.max(...playerData.eloHistory.map(h => h.elo)) : 0;
     const rival = Object.keys(opponents).length > 0 ? Object.entries(opponents).sort((a,b) => b[1] - a[1])[0][0] : "Aucun";
     
@@ -217,7 +217,7 @@ function displayPlayerProfile(player) {
     if (privateMessage) privateMessage.style.display = 'none';
     allContainers.forEach(container => { if (container) container.style.display = 'block'; });
     
-    const stats = calculatePlayerStats(player.fullName);
+    const stats = calculatePlayerStats(player.pseudo);
     const rang = getRankFromElo(player.elo);
     
     document.getElementById('stat-rank').textContent = rang;
@@ -260,18 +260,18 @@ function displayPlayerProfile(player) {
     const eloCtx = document.getElementById('elo-chart')?.getContext('2d');
     if (eloCtx) {
         if (eloChartInstance) eloChartInstance.destroy();
-        eloChartInstance = new Chart(eloCtx, { type: 'line', data: { labels: player.eloHistory.map(h => h.date), datasets: [{ label: `Progression ELO de ${player.fullName}`, data: player.eloHistory.map(h => h.elo), borderColor: '#f4a261', backgroundColor: 'rgba(244, 162, 97, 0.2)', borderWidth: 2, tension: 0.3, fill: true }] }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: false, ticks: { color: '#f5f5f5' }, grid: { color: 'rgba(245, 245, 245, 0.1)' } }, x: { ticks: { color: '#f5f5f5' }, grid: { color: 'rgba(245, 245, 245, 0.1)' } } }, plugins: { legend: { display: false } } } });
+        eloChartInstance = new Chart(eloCtx, { type: 'line', data: { labels: player.eloHistory.map(h => h.date), datasets: [{ label: `Progression ELO de ${player.pseudo}`, data: player.eloHistory.map(h => h.elo), borderColor: '#f4a261', backgroundColor: 'rgba(244, 162, 97, 0.2)', borderWidth: 2, tension: 0.3, fill: true }] }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: false, ticks: { color: '#f5f5f5' }, grid: { color: 'rgba(245, 245, 245, 0.1)' } }, x: { ticks: { color: '#f5f5f5' }, grid: { color: 'rgba(245, 245, 245, 0.1)' } } }, plugins: { legend: { display: false } } } });
     }
 
     const recentMatchesList = document.getElementById('recent-matches-list');
     if (recentMatchesList) {
         recentMatchesList.innerHTML = '';
-        const playerMatches = matches.filter(m => m.player1 === player.fullName || m.player2 === player.fullName).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+        const playerMatches = matches.filter(m => m.player1 === player.pseudo || m.player2 === player.pseudo).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
         if (playerMatches.length === 0) {
             recentMatchesList.innerHTML = `<li class="text-ivory/70">Aucun match enregistré.</li>`;
         } else {
             playerMatches.forEach(match => {
-                const opponent = match.player1 === player.fullName ? match.player2 : match.player1;
+                const opponent = match.player1 === player.pseudo ? match.player2 : match.player1;
                 const historyEntry = player.eloHistory.find(h => h.date === match.date);
                 const eloChange = historyEntry ? Math.round(historyEntry.eloChange) : 0;
                 let resultText, resultColor, eloColor, sign;
@@ -318,12 +318,12 @@ function refreshUI() {
     updateLeaderboardDisplay();
     const studentSelect = document.querySelector('#student-select');
     if (studentSelect && studentSelect.value) {
-        const selectedPlayer = joueurs.find(j => j.fullName === studentSelect.value);
+        const selectedPlayer = joueurs.find(j => j.pseudo === studentSelect.value);
         displayPlayerProfile(selectedPlayer);
     } else if (studentSelect) {
         const firstPublicPlayer = joueurs.find(j => !j.isPrivate);
         if (firstPublicPlayer) {
-            studentSelect.value = firstPublicPlayer.fullName;
+            studentSelect.value = firstPublicPlayer.pseudo;
             displayPlayerProfile(firstPublicPlayer);
         } else {
              displayPlayerProfile({ isPrivate: true });
@@ -332,7 +332,7 @@ function refreshUI() {
 }
 
 // === COMMANDES DE GESTION (via la console) ===
-window.addPlayer = function(fullName, classe) { const newMember = { fullName, classe }; console.log("✅ Joueur ajouté ! Copiez la ligne ci-dessous et collez-la dans la liste 'roster' :"); console.log(JSON.stringify(newMember, null, 2) + ','); roster.push(newMember); processAllMatches(); refreshUI(); };
+window.addPlayer = function(pseudo, classe) { const newMember = { pseudo, classe }; console.log("✅ Joueur ajouté ! Copiez la ligne ci-dessous et collez-la dans la liste 'roster' :"); console.log(JSON.stringify(newMember, null, 2) + ','); roster.push(newMember); processAllMatches(); refreshUI(); };
 window.recordMatch = function(player1, player2, result) { const newMatch = { id: matches.length + 1, date: new Date().toISOString().split('T')[0], player1, player2, result }; console.log("✅ Match enregistré ! Copiez la ligne ci-dessous et collez-la dans la liste 'matches' :"); console.log(JSON.stringify(newMatch, null, 2) + ','); matches.push(newMatch); processAllMatches(); refreshUI(); };
 
 // === INITIALISATION DE LA PAGE ===
@@ -425,15 +425,15 @@ function setupProgressionSection() {
     if (!studentSelect) return;
     studentSelect.innerHTML = '';
     const publicPlayers = joueurs.filter(j => !j.isPrivate);
-    const sortedPlayers = publicPlayers.sort((a, b) => a.fullName.localeCompare(b.fullName));
+    const sortedPlayers = publicPlayers.sort((a, b) => a.pseudo.localeCompare(b.pseudo));
     sortedPlayers.forEach(joueur => {
         const option = document.createElement('option');
-        option.value = joueur.fullName;
-        option.textContent = joueur.fullName;
+        option.value = joueur.pseudo;
+        option.textContent = joueur.pseudo;
         studentSelect.appendChild(option);
     });
     studentSelect.addEventListener('change', (event) => {
-        const selectedPlayer = joueurs.find(j => j.fullName === event.target.value);
+        const selectedPlayer = joueurs.find(j => j.pseudo === event.target.value);
         displayPlayerProfile(selectedPlayer);
     });
     if (sortedPlayers.length > 0) {
