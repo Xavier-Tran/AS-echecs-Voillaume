@@ -4,20 +4,20 @@
 
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
-  { fullName: "Jean Neba", classe: "TG4" },
-  { fullName: "Xavier Tran", classe: "Enseignant", startElo: 1773, isPrivate: true },
-  { fullName: "El-Amir Ali", classe: "1G1" },
-  { fullName: "Rayan Benzenati", classe: "1G1" },
-  { fullName: "Razvan Craciun", classe: "TG7" },
-  { fullName: "Hugo Tokiniaina-Nazim", classe: "1G1" },
-  { fullName: "Mahmoud Ait-Ouaret", classe: "1STI2D2" },
-  { fullName: "Adama Basse", classe: "1TSCRSA" },
-  { fullName: "Paul-Noah Mondelice", classe: "1TSCRSA" },
-  { fullName: "Ryan Stary", classe: "1TSCRSA" },
-  { fullName: "Soufian Bouaziz", classe: "1G7" },
-  { fullName: "Mohamed-Adam Haouhaou", classe: "1G1" },
-  { fullName: "Rémi Courouble", classe: "Enseignant", startElo: 1299 },
-  { fullName: "Brian Phrakousonh", classe: "Enseignant", startElo: 1299 },
+  { fullName: "Jean Neba", statut: "Élève" },
+  { fullName: "Xavier Tran", statut: "Enseignant", startElo: 1773, isPrivate: true },
+  { fullName: "El-Amir Ali", statut: "Élève" },
+  { fullName: "Rayan Benzenati", statut: "Élève" },
+  { fullName: "Razvan Craciun", statut: "Élève" },
+  { fullName: "Hugo Tokiniaina-Nazim", statut: "Élève" },
+  { fullName: "Mahmoud Ait-Ouaret", statut: "Élève" },
+  { fullName: "Adama Basse", statut: "Élève" },
+  { fullName: "Paul-Noah Mondelice", statut: "Élève" },
+  { fullName: "Ryan Stary", statut: "Élève" },
+  { fullName: "Soufian Bouaziz", statut: "Élève" },
+  { fullName: "Mohamed-Adam Haouhaou", statut: "Élève" },
+  { fullName: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },
+  { fullName: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },
 ];
 
 // === HISTORIQUE DES MATCHS ===
@@ -128,7 +128,7 @@ function processAllMatches() {
         const startingElo = membre.startElo || ELO_INITIAL;
         return { 
             prenom: membre.fullName.split(' ')[0] || membre.fullName, nom: membre.fullName.split(' ')[1] || '', 
-            fullName: membre.fullName, classe: membre.classe, elo: startingElo, 
+            fullName: membre.fullName, classe: membre.statut, elo: startingElo, 
             eloHistory: [{ date: "Début", elo: startingElo }], isPrivate: membre.isPrivate || false,
             isChampion: membre.isChampion || false
         };
