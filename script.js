@@ -127,7 +127,6 @@ function processAllMatches() {
     joueurs = roster.map(membre => {
         const startingElo = membre.startElo || ELO_INITIAL;
         return { 
-            prenom: membre.pseudo.split(' ')[0] || membre.pseudo, nom: membre.pseudo.split(' ')[1] || '', 
             pseudo: membre.pseudo, classe: membre.statut, elo: startingElo, 
             eloHistory: [{ date: "Début", elo: startingElo }], isPrivate: membre.isPrivate || false,
             isChampion: membre.isChampion || false
@@ -309,7 +308,14 @@ function updateLeaderboardDisplay() {
     const nameClass = (index + 1) === 1 ? 'text-sandy font-semibold' : 'text-ivory';
     const rang = getRankFromElo(joueur.elo);
     // Le classement (index + 1) est maintenant basé sur la liste publique.
-    const playerRow = `<tr class="border-b border-ivory/20"><td class="py-4 px-4 text-ivory">${index + 1}</td><td class="py-4 px-4 ${nameClass}">${joueur.prenom}</td><td class="py-4 px-4 ${nameClass}">${joueur.nom}</td><td class="py-4 px-4 text-ivory">${joueur.elo}</td><td class="py-4 px-4 text-ivory">${joueur.classe}</td><td class="py-4 px-4 text-ivory">${rang}</td></tr>`;
+    const playerRow = `
+      <tr class="border-b border-ivory/20">
+        <td class="py-4 px-4 text-ivory">${index + 1}</td>
+        <td class="py-4 px-4 ${nameClass}">${joueur.pseudo}</td>
+        <td class="py-4 px-4 text-ivory">${joueur.elo}</td>
+        <td class="py-4 px-4 text-ivory">${joueur.classe}</td>
+        <td class="py-4 px-4 text-ivory">${rang}</td>
+      </tr>`;
     tableBody.innerHTML += playerRow;
   });
 }
