@@ -122,22 +122,26 @@
 </section>
 
     <section id="scores" class="py-16 bg-charcoal-light">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Classements & Scores</h2>
-            <div class="bg-charcoal rounded-xl shadow-lg p-6">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left table-auto">
-                        <thead>
-                            <tr class="bg-sandy text-charcoal rounded-xl">
-                                <th class="py-3 px-4 rounded-tl-lg">Classement</th><th class="py-3 px-4">Prénom</th><th class="py-3 px-4">Nom</th>
-                                <th class="py-3 px-4">Élo V.</th><th class="py-3 px-4">Statut</th><th class="py-3 px-4 rounded-tr-lg">Rang</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leaderboard-body"></tbody>
-                    </table>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Classements & Scores</h2>
+        <div class="bg-charcoal rounded-xl shadow-lg p-6">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left table-fixed rounded">
+              <thead>
+                <tr class="bg-sandy text-charcoal rounded-xl">
+                  <th class="py-3 px-4 rounded-tl-lg">Classement</th>
+                  <th class="py-3 px-4">Pseudo</th>
+                  <th class="py-3 px-4">Élo V.</th>
+                  <th class="py-3 px-4">Statut</th>
+                  <th class="py-3 px-4 rounded-tr-lg">Rang</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </section>
   
     <section id="elo" class="py-16 bg-charcoal">
