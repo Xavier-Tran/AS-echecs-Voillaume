@@ -280,27 +280,52 @@ function displayPlayerProfile(player) {
     const recentMatchesList = document.getElementById('recent-matches-list');
     if (recentMatchesList) {
         recentMatchesList.innerHTML = '';
-        const playerMatches = matches.filter(m => m.player1 === player.pseudo || m.player2 === player.pseudo).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+    
+        // --- DÉBUT MODIFICATION DU TRI ---
+        const playerMatches = matches
+            .filter(m => m.player1 === player.pseudo || m.player2 === player.pseudo)
+            .sort((a, b) => {
+                // D'abord, on trie par date, la plus récente en premier
+                const dateComparison = new Date(b.date) - new Date(a.date);
+                if (dateComparison !== 0) {
+                    return dateComparison;
+                }
+                // Si les dates sont identiques, on trie par ID, le plus grand en premier
+                return b.id - a.id;
+            })
+            .slice(0, 5);
+        // --- FIN MODIFICATION DU TRI ---
+    
         if (playerMatches.length === 0) {
             recentMatchesList.innerHTML = `<li class="text-ivory/70">Aucun match enregistré.</li>`;
         } else {
             playerMatches.forEach(match => {
                 const opponent = match.player1 === player.pseudo ? match.player2 : match.player1;
                 const historyEntry = player.eloHistory.find(h => h.date === match.date);
-                const eloChange = historyEntry ? Math.round(historyEntry.eloChange) : 0;
-                let resultText, resultColor;
-                if (match.result === 'draw') {
-                    resultText = 'Nul';
-                    resultColor = 'text-yellow-400';
-                } else if (player.pseudo === match.player1) {
-                    resultText = 'Victoire';
-                    resultColor = 'text-green-400';
-                } else {
-                    resultText = 'Défaite';
-                    resultColor = 'text-red-400';
-                }
-                const eloColor = eloChange > 0 ? 'text-green-400' : eloChange < 0 ? 'text-red-400' : 'text-gray-400';
-                const sign = eloChange > 0 ? '+' : '';
+                // On utilise Math.abs() pour toujours avoir une valeur positive des points
+                const eloChange = historyEntry ? Math.round(Math.abs(historyEntry.eloChange)) : 0;
+                
+                let resultText, resultColor, eloColor, sign;
+    
+                // --- DÉBUT MODIFICATION DE L'AFFICHAGE ---
+                if (match.result === 'draw') {
+                    resultText = 'Nul';
+                    resultColor = 'text-yellow-400';
+                    eloColor = 'text-gray-400';
+                    sign = '';
+                } else if (player.pseudo === match.player1) {
+                    resultText = 'Victoire';
+                    resultColor = 'text-green-400';
+                    eloColor = 'text-green-400';
+                    sign = '+';
+                } else {
+                    resultText = 'Défaite';
+                    resultColor = 'text-red-400';
+                    eloColor = 'text-red-400';
+                    sign = '-'; // Le signe est maintenant correct pour une défaite
+                }
+                // --- FIN MODIFICATION DE L'AFFICHAGE ---
+    
                 const li = document.createElement('li');
                 li.className = 'flex justify-between items-center bg-charcoal p-3 rounded-lg';
                 li.innerHTML = `<div>vs. <span class="font-semibold">${opponent}</span></div><div class="flex items-center space-x-4"><span class="font-bold ${eloColor}">(${sign}${eloChange})</span><span class="font-bold ${resultColor}">${resultText}</span></div>`;
