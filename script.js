@@ -6,7 +6,7 @@
 const roster = [
   { pseudo: "Jean Neba", statut: "Élève" },                                     //Jean Neba, G, TG4
   { pseudo: "Shadow", statut: "Enseignant", startElo: 1773, isPrivate: true },  //Xavier tran
-  { pseudo: "El-Amir Ali", statut: "Élève" },                                   //El-Amir Ali, G, 1G1
+  { pseudo: "EleveDuRoi", statut: "Élève" },                                    //El-Amir Ali, G, 1G1
   { pseudo: "Rayan Benzenati", statut: "Élève" },                               //Rayan Benzenati, G, 1G1
   { pseudo: "Razvan Craciun", statut: "Élève" },                                //Razvan Craciun, G, TG7
   { pseudo: "Hugo Tokiniaina-Nazim", statut: "Élève" },                         //Hugo Tokiniaina-Nazim, G, 1G1
@@ -14,7 +14,7 @@ const roster = [
   { pseudo: "Adama Basse", statut: "Élève" },                                   //Adama Basse, G, 1TSCRSA
   { pseudo: "Paul-Noah Mondelice", statut: "Élève" },                           //Paul-Noah Mondelice, G, 1TSCRSA
   { pseudo: "Ryan Stary", statut: "Élève" },                                    //Ryan Stary, G, 1TSCRSA
-  { pseudo: "Soufian Bouaziz", statut: "Élève" },                               //Soufian Bouaziz, G, 1G7
+  { pseudo: "La-plume-44", statut: "Élève" },                                   //Soufian Bouzerz, G, 1G7
   { pseudo: "Mohamed-Adam Haouhaou", statut: "Élève" },                         //Mohamed-Adam Haouhaou, G, 1G1
   { pseudo: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },           //Rémi Courouble
   { pseudo: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },        //Brian Phrakousonh
@@ -23,7 +23,7 @@ const roster = [
 // === HISTORIQUE DES MATCHS ===
 const matches = [
   { "id": 1, "date": "2025-10-13", "player1": "Adama Basse", "player2": "Paul-Noah Mondelice", "result": "win" },
-  { "id": 2, "date": "2025-10-13", "player1": "El-Amir Ali", "player2": "Jean Neba", "result": "win" },
+  { "id": 2, "date": "2025-10-13", "player1": "EleveDuRoi", "player2": "Jean Neba", "result": "win" },
   { "id": 3, "date": "2025-10-13", "player1": "Paul-Noah Mondelice", "player2": "Ryan Stary", "result": "win" },
 ];
 
