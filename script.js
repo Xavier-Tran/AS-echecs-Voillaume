@@ -125,13 +125,30 @@ const WEEKLY_CHALLENGES = [
 //          FONCTIONS DE CALCUL
 // ===============================
 
-function calculateNewElo(eloA, eloB, scoreA) {
-  const expectedA = 1 / (1 + Math.pow(10, (eloB - eloA) / 400));
-  const expectedB = 1 - expectedA;
-  const scoreB = 1 - scoreA;
-  const newEloA = eloA + K_FACTOR * (scoreA - expectedA);
-  const newEloB = eloB + K_FACTOR * (scoreB - expectedB);
-  return { newEloA: Math.round(newEloA), newEloB: Math.round(newEloB) };
+function calculateNewElo(playerA, playerB, scoreA) {
+    const eloA = playerA.elo;
+    const eloB = playerB.elo;
+
+    // Le calcul de la probabilité de victoire ne change pas
+    const expectedA = 1 / (1 + Math.pow(10, (eloB - eloA) / 400));
+    const expectedB = 1 - expectedA;
+
+    const scoreB = 1 - scoreA;
+
+    // --- DÉBUT DE LA MODIFICATION ---
+
+    // On détermine le K-Factor pour chaque joueur
+    // (Suppose que vous avez ajouté une propriété "gamesPlayed" à vos objets joueurs)
+    const kA = (playerA.gamesPlayed < 30) ? 40 : 20;
+    const kB = (playerB.gamesPlayed < 30) ? 40 : 20;
+
+    // On utilise le K-Factor spécifique à chaque joueur dans le calcul
+    const newEloA = eloA + kA * (scoreA - expectedA);
+    const newEloB = eloB + kB * (scoreB - expectedB);
+
+    // --- FIN DE LA MODIFICATION ---
+
+    return { newEloA: Math.round(newEloA), newEloB: Math.round(newEloB) };
 }
 
 function getRankFromElo(elo) {
@@ -141,24 +158,42 @@ function getRankFromElo(elo) {
 function processAllMatches() {
     joueurs = roster.map(membre => {
         const startingElo = membre.startElo || ELO_INITIAL;
-        return { 
-            pseudo: membre.pseudo, classe: membre.statut, elo: startingElo, 
-            eloHistory: [{ date: "Début", elo: startingElo }], isPrivate: membre.isPrivate || false,
-            isChampion: membre.isChampion || false
+        return {
+            pseudo: membre.pseudo,
+            classe: membre.statut,
+            elo: startingElo,
+            eloHistory: [{ date: "Début", elo: startingElo }],
+            isPrivate: membre.isPrivate || false,
+            isChampion: membre.isChampion || false,
+            gamesPlayed: 0 // <--- MODIFICATION : On initialise le compteur de matchs
         };
     });
+
     const sortedMatches = [...matches].sort((a, b) => new Date(a.date) - new Date(b.date));
+
     sortedMatches.forEach(match => {
         const joueurA = joueurs.find(j => j.pseudo === match.player1);
         const joueurB = joueurs.find(j => j.pseudo === match.player2);
         if (!joueurA || !joueurB) return;
+
+        // <--- MODIFICATION : On incrémente le compteur de matchs pour chaque joueur
+        joueurA.gamesPlayed++;
+        joueurB.gamesPlayed++;
+
         let scoreA = match.result === 'win' ? 1 : (match.result === 'draw' ? 0.5 : 0);
+
         const oldEloA = joueurA.elo;
         const oldEloB = joueurB.elo;
-        const { newEloA, newEloB } = calculateNewElo(oldEloA, oldEloB, scoreA);
-        joueurA.elo = newEloA; joueurB.elo = newEloB;
-        joueurA.eloHistory.push({ date: match.date, elo: newEloA, eloChange: newEloA - oldEloA });
-        joueurB.eloHistory.push({ date: match.date, elo: newEloB, eloChange: newEloB - oldEloB });
+
+        // <--- MODIFICATION : On passe les objets joueurs en entier pour le K-Factor variable
+        const { newEloA, newEloB } = calculateNewElo(joueurA, joueurB, scoreA);
+
+        joueurA.elo = newEloA;
+        joueurB.elo = newEloB;
+
+        // <--- MODIFICATION : On ajoute l'ID du match pour une récupération fiable
+        joueurA.eloHistory.push({ date: match.date, elo: newEloA, eloChange: newEloA - oldEloA, matchId: match.id });
+        joueurB.eloHistory.push({ date: match.date, elo: newEloB, eloChange: newEloB - oldEloB, matchId: match.id });
     });
 }
 
@@ -301,9 +336,9 @@ function displayPlayerProfile(player) {
         } else {
             playerMatches.forEach(match => {
                 const opponent = match.player1 === player.pseudo ? match.player2 : match.player1;
-                const historyEntry = player.eloHistory.find(h => h.date === match.date);
+                const historyEntry = player.eloHistory.find(h => h.matchId === match.id);
                 // On utilise Math.abs() pour toujours avoir une valeur positive des points
-                const eloChange = historyEntry ? Math.round(Math.abs(historyEntry.eloChange)) : 0;
+                const eloChange = historyEntry ? Math.round(historyEntry.eloChange) : 0;
                 
                 let resultText, resultColor, eloColor, sign;
     
@@ -328,7 +363,7 @@ function displayPlayerProfile(player) {
     
                 const li = document.createElement('li');
                 li.className = 'flex justify-between items-center bg-charcoal p-3 rounded-lg';
-                li.innerHTML = `<div>vs. <span class="font-semibold">${opponent}</span></div><div class="flex items-center space-x-4"><span class="font-bold ${eloColor}">(${sign}${eloChange})</span><span class="font-bold ${resultColor}">${resultText}</span></div>`;
+                li.innerHTML = `<div>vs. <span class="font-semibold">${opponent}</span></div><div class="flex items-center space-x-4"><span class="font-bold ${eloColor}">(${sign}${Math.abs(eloChange)})</span><span class="font-bold ${resultColor}">${resultText}</span></div>`;
                 recentMatchesList.appendChild(li);
             });
         }
