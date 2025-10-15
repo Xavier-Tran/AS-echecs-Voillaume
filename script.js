@@ -288,11 +288,19 @@ function displayPlayerProfile(player) {
                 const opponent = match.player1 === player.pseudo ? match.player2 : match.player1;
                 const historyEntry = player.eloHistory.find(h => h.date === match.date);
                 const eloChange = historyEntry ? Math.round(historyEntry.eloChange) : 0;
-                let resultText, resultColor, eloColor, sign;
-                if (eloChange > 0) { resultColor = 'text-green-400'; eloColor = 'text-green-400'; sign = '+'; resultText = 'Victoire'; }
-                else if (eloChange < 0) { resultColor = 'text-red-400'; eloColor = 'text-red-400'; sign = ''; resultText = 'Défaite'; }
-                else { resultColor = 'text-yellow-400'; eloColor = 'text-gray-400'; sign = ''; resultText = 'Nul'; }
-                if (match.result === 'draw') resultText = 'Nul';
+                let resultText, resultColor;
+                if (match.result === 'draw') {
+                    resultText = 'Nul';
+                    resultColor = 'text-yellow-400';
+                } else if (player.pseudo === match.player1) {
+                    resultText = 'Victoire';
+                    resultColor = 'text-green-400';
+                } else {
+                    resultText = 'Défaite';
+                    resultColor = 'text-red-400';
+                }
+                const eloColor = eloChange > 0 ? 'text-green-400' : eloChange < 0 ? 'text-red-400' : 'text-gray-400';
+                const sign = eloChange > 0 ? '+' : '';
                 const li = document.createElement('li');
                 li.className = 'flex justify-between items-center bg-charcoal p-3 rounded-lg';
                 li.innerHTML = `<div>vs. <span class="font-semibold">${opponent}</span></div><div class="flex items-center space-x-4"><span class="font-bold ${eloColor}">(${sign}${eloChange})</span><span class="font-bold ${resultColor}">${resultText}</span></div>`;
