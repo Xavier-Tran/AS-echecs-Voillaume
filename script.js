@@ -6,25 +6,40 @@
 const roster = [
   { pseudo: "Jean Neba", statut: "Élève" },                                     //Jean Neba, G, TG4
   { pseudo: "Shadow", statut: "Enseignant", startElo: 1773, isPrivate: true },  //Xavier tran
-  { pseudo: "EleveDuRoi", statut: "Élève" },                                    //El-Amir Ali, G, 1G1
-  { pseudo: "Rayan Benzenati", statut: "Élève" },                               //Rayan Benzenati, G, 1G1
+  { pseudo: "ÉlèveDuRoi", statut: "Élève" },                                    //El-Amir Ali, G, 1G1
+  { pseudo: "BlacKHawK5", statut: "Élève" },                                    //Rayan Benzenati, G, 1G1
   { pseudo: "Razvan Craciun", statut: "Élève" },                                //Razvan Craciun, G, TG7
-  { pseudo: "Hugo Tokiniaina-Nazim", statut: "Élève" },                         //Hugo Tokiniaina-Nazim, G, 1G1
-  { pseudo: "Mahmoud Ait-Ouaret", statut: "Élève" },                            //Mahmoud Ait-Ouaret, G, 1STI2D2
-  { pseudo: "Adama Basse", statut: "Élève" },                                   //Adama Basse, G, 1TSCRSA
-  { pseudo: "Paul-Noah Mondelice", statut: "Élève" },                           //Paul-Noah Mondelice, G, 1TSCRSA
-  { pseudo: "Ryan Stary", statut: "Élève" },                                    //Ryan Stary, G, 1TSCRSA
+  { pseudo: "HugoleMéchant9315", statut: "Élève" },                             //Hugo Tokiniaina-Nazim, G, 1G1
+  { pseudo: "MHMD", statut: "Élève" },                                          //Mahmoud Ait-Ouaret, G, 1STI2D2
+  { pseudo: "LUCKYBOY", statut: "Élève" },                                      //Adama Basse, G, 1TSCRSA
+  { pseudo: "P2N", statut: "Élève" },                                           //Paul-Noah Mondelice, G, 1TSCRSA
+  { pseudo: "RSK", statut: "Élève" },                                           //Ryan Stary, G, 1TSCRSA
   { pseudo: "La-plume-44", statut: "Élève" },                                   //Soufian Bouzerz, G, 1G7
-  { pseudo: "Mohamed-Adam Haouhaou", statut: "Élève" },                         //Mohamed-Adam Haouhaou, G, 1G1
-  { pseudo: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },           //Rémi Courouble
-  { pseudo: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },        //Brian Phrakousonh
-];
+  { pseudo: "Moham", statut: "Élève" },                                         //Mohamed-Adam Haouhaou, G, 1G1
+  { pseudo: "Yloria", statut: "Enseignant", startElo: 1299 },                   //Rémi Courouble
+  { pseudo: "slenius", statut: "Enseignant", startElo: 1299 },                  //Brian Phrakousonh
+  { pseudo: "rayane3000kens", statut: "Élève" },                                //Rayane Zenati, G
+  { pseudo: "Youssef Moharram", statut: "Élève" },                              //Youssef Moharram, G
+  { pseudo: "Massi Djebir", statut: "Élève" },                                  //Massi Djebir, G
+  ];
 
 // === HISTORIQUE DES MATCHS ===
 const matches = [
-  { "id": 1, "date": "2025-10-13", "player1": "Adama Basse", "player2": "Paul-Noah Mondelice", "result": "win" },
-  { "id": 2, "date": "2025-10-13", "player1": "EleveDuRoi", "player2": "Jean Neba", "result": "win" },
-  { "id": 3, "date": "2025-10-13", "player1": "Paul-Noah Mondelice", "player2": "Ryan Stary", "result": "win" },
+  { "id": 1, "date": "2025-10-13", "player1": "LUCKYBOY", "player2": "P2N", "result": "win" },
+  { "id": 2, "date": "2025-10-13", "player1": "ÉlèveDuRoi", "player2": "Jean Neba", "result": "win" },
+  { "id": 3, "date": "2025-10-15", "player1": "P2N", "player2": "RSK", "result": "win" },
+  { "id": 4, "date": "2025-10-15", "player1": "Shadow", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 5, "date": "2025-10-15", "player1": "slenius", "player2": "BlacKHawK5", "result": "win" },
+  { "id": 6, "date": "2025-10-15", "player1": "ÉlèveDuRoi", "player2": "RSK", "result": "win" },
+  { "id": 7, "date": "2025-10-15", "player1": "Shadow", "player2": "ÉlèveDuRoi", "result": "win" },
+  { "id": 8, "date": "2025-10-15", "player1": "P2N", "player2": "slenius", "result": "win" },
+  { "id": 9, "date": "2025-10-15", "player1": "Yloria", "player2": "Youssef Moharram", "result": "win" },
+  { "id": 10, "date": "2025-10-15", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 6, "date": "2025-10-15", "player1": "Shadow", "player2": "P2N", "result": "win" },
+  { "id": 7, "date": "2025-10-15", "player1": "Yloria", "player2": "BlacKHawK5", "result": "win" },
+  { "id": 8, "date": "2025-10-15", "player1": "slenius", "player2": "ÉlèveDuRoi", "result": "win" },
+  { "id": 9, "date": "2025-10-15", "player1": "rayane3000kens", "player2": "RSK", "result": "win" },
+  { "id": 10, "date": "2025-10-15", "player1": "Youssef Moharram", "player2": "LUCKYBOY", "result": "win" },
 ];
 
 let joueurs = [];
