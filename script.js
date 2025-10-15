@@ -5,7 +5,7 @@
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
   { pseudo: "Jean Neba", statut: "Élève" },                                     //Jean Neba, G, TG4
-  { pseudo: "Shadow", statut: "Enseignant", startElo: 1773, isPrivate: true },  //Xavier tran
+  { pseudo: "Shadow", statut: "Enseignant", startElo: 1773 },                   //Xavier tran
   { pseudo: "ÉlèveDuRoi", statut: "Élève" },                                    //El-Amir Ali, G, 1G1
   { pseudo: "BlacKHawK5", statut: "Élève" },                                    //Rayan Benzenati, G, 1G1
   { pseudo: "Razvan Craciun", statut: "Élève" },                                //Razvan Craciun, G, TG7
@@ -35,11 +35,11 @@ const matches = [
   { "id": 8, "date": "2025-10-15", "player1": "P2N", "player2": "slenius", "result": "win" },
   { "id": 9, "date": "2025-10-15", "player1": "Yloria", "player2": "Youssef Moharram", "result": "win" },
   { "id": 10, "date": "2025-10-15", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
-  { "id": 6, "date": "2025-10-15", "player1": "Shadow", "player2": "P2N", "result": "win" },
-  { "id": 7, "date": "2025-10-15", "player1": "Yloria", "player2": "BlacKHawK5", "result": "win" },
-  { "id": 8, "date": "2025-10-15", "player1": "slenius", "player2": "ÉlèveDuRoi", "result": "win" },
-  { "id": 9, "date": "2025-10-15", "player1": "rayane3000kens", "player2": "RSK", "result": "win" },
-  { "id": 10, "date": "2025-10-15", "player1": "Youssef Moharram", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 11, "date": "2025-10-15", "player1": "Shadow", "player2": "P2N", "result": "win" },
+  { "id": 12, "date": "2025-10-15", "player1": "Yloria", "player2": "BlacKHawK5", "result": "win" },
+  { "id": 13, "date": "2025-10-15", "player1": "slenius", "player2": "ÉlèveDuRoi", "result": "win" },
+  { "id": 14, "date": "2025-10-15", "player1": "rayane3000kens", "player2": "RSK", "result": "win" },
+  { "id": 15, "date": "2025-10-15", "player1": "Youssef Moharram", "player2": "LUCKYBOY", "result": "win" },
 ];
 
 let joueurs = [];
