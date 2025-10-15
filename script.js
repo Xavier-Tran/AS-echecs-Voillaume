@@ -23,7 +23,7 @@ const roster = [
 // === HISTORIQUE DES MATCHS ===
 const matches = [
   { "id": 1, "date": "2025-10-13", "player1": "Adama Basse", "player2": "Paul-Noah Mondelice", "result": "win" },
-  { "id": 2, "date": "2025-10-13", "player1": "El-Amir", "player2": "Jean Neba", "result": "win" },
+  { "id": 2, "date": "2025-10-13", "player1": "El-Amir Ali", "player2": "Jean Neba", "result": "win" },
   { "id": 3, "date": "2025-10-13", "player1": "Paul-Noah Mondelice", "player2": "Ryan Stary", "result": "win" },
 ];
 
