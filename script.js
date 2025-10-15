@@ -4,20 +4,20 @@
 
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
-  { pseudo: "Jean Neba", statut: "Élève" },
-  { pseudo: "Xavier Tran", statut: "Enseignant", startElo: 1773, isPrivate: true },
-  { pseudo: "El-Amir Ali", statut: "Élève" },
-  { pseudo: "Rayan Benzenati", statut: "Élève" },
-  { pseudo: "Razvan Craciun", statut: "Élève" },
-  { pseudo: "Hugo Tokiniaina-Nazim", statut: "Élève" },
-  { pseudo: "Mahmoud Ait-Ouaret", statut: "Élève" },
-  { pseudo: "Adama Basse", statut: "Élève" },
-  { pseudo: "Paul-Noah Mondelice", statut: "Élève" },
-  { pseudo: "Ryan Stary", statut: "Élève" },
-  { pseudo: "Soufian Bouaziz", statut: "Élève" },
-  { pseudo: "Mohamed-Adam Haouhaou", statut: "Élève" },
-  { pseudo: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },
-  { pseudo: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "Jean Neba", statut: "Élève" },                                     //Jean Neba, G, TG4
+  { pseudo: "Shadow", statut: "Enseignant", startElo: 1773, isPrivate: true },  //Xavier tran
+  { pseudo: "El-Amir Ali", statut: "Élève" },                                   //El-Amir Ali, G, 1G1
+  { pseudo: "Rayan Benzenati", statut: "Élève" },                               //Rayan Benzenati, G, 1G1
+  { pseudo: "Razvan Craciun", statut: "Élève" },                                //Razvan Craciun, G, TG7
+  { pseudo: "Hugo Tokiniaina-Nazim", statut: "Élève" },                         //Hugo Tokiniaina-Nazim, G, 1G1
+  { pseudo: "Mahmoud Ait-Ouaret", statut: "Élève" },                            //Mahmoud Ait-Ouaret, G, 1STI2D2
+  { pseudo: "Adama Basse", statut: "Élève" },                                   //Adama Basse, G, 1TSCRSA
+  { pseudo: "Paul-Noah Mondelice", statut: "Élève" },                           //Paul-Noah Mondelice, G, 1TSCRSA
+  { pseudo: "Ryan Stary", statut: "Élève" },                                    //Ryan Stary, G, 1TSCRSA
+  { pseudo: "Soufian Bouaziz", statut: "Élève" },                               //Soufian Bouaziz, G, 1G7
+  { pseudo: "Mohamed-Adam Haouhaou", statut: "Élève" },                         //Mohamed-Adam Haouhaou, G, 1G1
+  { pseudo: "Rémi Courouble", statut: "Enseignant", startElo: 1299 },           //Rémi Courouble
+  { pseudo: "Brian Phrakousonh", statut: "Enseignant", startElo: 1299 },        //Brian Phrakousonh
 ];
 
 // === HISTORIQUE DES MATCHS ===
