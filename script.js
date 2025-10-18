@@ -121,32 +121,21 @@ const WEEKLY_CHALLENGES = [
     }
 ];
 
-// ===============================
-//          FONCTIONS DE CALCUL
-// ===============================
-
+// === FONCTIONS DE CALCUL ===
 function calculateNewElo(playerA, playerB, scoreA) {
     const eloA = playerA.elo;
     const eloB = playerB.elo;
 
-    // Le calcul de la probabilité de victoire ne change pas
     const expectedA = 1 / (1 + Math.pow(10, (eloB - eloA) / 400));
     const expectedB = 1 - expectedA;
 
     const scoreB = 1 - scoreA;
 
-    // --- DÉBUT DE LA MODIFICATION ---
-
-    // On détermine le K-Factor pour chaque joueur
-    // (Suppose que vous avez ajouté une propriété "gamesPlayed" à vos objets joueurs)
     const kA = (playerA.gamesPlayed < 30) ? 40 : 20;
     const kB = (playerB.gamesPlayed < 30) ? 40 : 20;
 
-    // On utilise le K-Factor spécifique à chaque joueur dans le calcul
     const newEloA = eloA + kA * (scoreA - expectedA);
     const newEloB = eloB + kB * (scoreB - expectedB);
-
-    // --- FIN DE LA MODIFICATION ---
 
     return { newEloA: Math.round(newEloA), newEloB: Math.round(newEloB) };
 }
@@ -165,7 +154,7 @@ function processAllMatches() {
             eloHistory: [{ date: "Début", elo: startingElo }],
             isPrivate: membre.isPrivate || false,
             isChampion: membre.isChampion || false,
-            gamesPlayed: 0 // <--- MODIFICATION : On initialise le compteur de matchs
+            gamesPlayed: 0
         };
     });
 
@@ -176,7 +165,6 @@ function processAllMatches() {
         const joueurB = joueurs.find(j => j.pseudo === match.player2);
         if (!joueurA || !joueurB) return;
 
-        // <--- MODIFICATION : On incrémente le compteur de matchs pour chaque joueur
         joueurA.gamesPlayed++;
         joueurB.gamesPlayed++;
 
@@ -185,13 +173,11 @@ function processAllMatches() {
         const oldEloA = joueurA.elo;
         const oldEloB = joueurB.elo;
 
-        // <--- MODIFICATION : On passe les objets joueurs en entier pour le K-Factor variable
         const { newEloA, newEloB } = calculateNewElo(joueurA, joueurB, scoreA);
 
         joueurA.elo = newEloA;
         joueurB.elo = newEloB;
 
-        // <--- MODIFICATION : On ajoute l'ID du match pour une récupération fiable
         joueurA.eloHistory.push({ date: match.date, elo: newEloA, eloChange: newEloA - oldEloA, matchId: match.id });
         joueurB.eloHistory.push({ date: match.date, elo: newEloB, eloChange: newEloB - oldEloB, matchId: match.id });
     });
@@ -231,10 +217,7 @@ function calculatePlayerStats(playerpseudo) {
     return { totalGames, wins, losses, draws, winRate, bestElo, advantage, currentStreak, rival, earnedBadges, badgeCounts };
 }
 
-// ===============================
-//         FONCTIONS D'AFFICHAGE
-// ===============================
-
+// === FONCTIONS D'AFFICHAGE ===
 let eloChartInstance = null;
 let resultsChartInstance = null;
 
@@ -316,20 +299,16 @@ function displayPlayerProfile(player) {
     if (recentMatchesList) {
         recentMatchesList.innerHTML = '';
     
-        // --- DÉBUT MODIFICATION DU TRI ---
         const playerMatches = matches
             .filter(m => m.player1 === player.pseudo || m.player2 === player.pseudo)
             .sort((a, b) => {
-                // D'abord, on trie par date, la plus récente en premier
                 const dateComparison = new Date(b.date) - new Date(a.date);
                 if (dateComparison !== 0) {
                     return dateComparison;
                 }
-                // Si les dates sont identiques, on trie par ID, le plus grand en premier
                 return b.id - a.id;
             })
             .slice(0, 5);
-        // --- FIN MODIFICATION DU TRI ---
     
         if (playerMatches.length === 0) {
             recentMatchesList.innerHTML = `<li class="text-ivory/70">Aucun match enregistré.</li>`;
@@ -337,12 +316,10 @@ function displayPlayerProfile(player) {
             playerMatches.forEach(match => {
                 const opponent = match.player1 === player.pseudo ? match.player2 : match.player1;
                 const historyEntry = player.eloHistory.find(h => h.matchId === match.id);
-                // On utilise Math.abs() pour toujours avoir une valeur positive des points
                 const eloChange = historyEntry ? Math.round(historyEntry.eloChange) : 0;
                 
                 let resultText, resultColor, eloColor, sign;
     
-                // --- DÉBUT MODIFICATION DE L'AFFICHAGE ---
                 if (match.result === 'draw') {
                     resultText = 'Nul';
                     resultColor = 'text-yellow-400';
@@ -357,9 +334,8 @@ function displayPlayerProfile(player) {
                     resultText = 'Défaite';
                     resultColor = 'text-red-400';
                     eloColor = 'text-red-400';
-                    sign = '-'; // Le signe est maintenant correct pour une défaite
+                    sign = '-';
                 }
-                // --- FIN MODIFICATION DE L'AFFICHAGE ---
     
                 const li = document.createElement('li');
                 li.className = 'flex justify-between items-center bg-charcoal p-3 rounded-lg';
@@ -379,18 +355,14 @@ function updateLeaderboardDisplay() {
   const tableBody = document.querySelector('#leaderboard-body');
   if (!tableBody) return;
 
-  // 👇 LIGNE AJOUTÉE : On crée une nouvelle liste qui exclut les joueurs privés.
   const publicJoueurs = joueurs.filter(joueur => !joueur.isPrivate);
 
-  // On trie cette nouvelle liste de joueurs publics par Élo.
   publicJoueurs.sort((a, b) => b.elo - a.elo);
   
   tableBody.innerHTML = '';
-  // On utilise maintenant la liste "publicJoueurs" pour afficher le tableau.
   publicJoueurs.forEach((joueur, index) => {
     const nameClass = (index + 1) === 1 ? 'text-sandy font-semibold' : 'text-ivory';
     const rang = getRankFromElo(joueur.elo);
-    // Le classement (index + 1) est maintenant basé sur la liste publique.
     const playerRow = `
       <tr class="border-b border-ivory/20">
         <td class="py-4 px-4 text-ivory">${index + 1}</td>
@@ -426,12 +398,10 @@ window.recordMatch = function(player1, player2, result) { const newMatch = { id:
 
 // === INITIALISATION DE LA PAGE ===
 document.addEventListener('DOMContentLoaded', () => {
-    // Logique qui s'exécute sur TOUTES les pages
     setupMobileMenu();
     setupSolutionButton();
     setupAccordions();
 
-    // Logique qui s'exécute SEULEMENT sur la page d'accueil
     if (document.getElementById('leaderboard-body')) {
         processAllMatches();
         updateLeaderboardDisplay();
@@ -440,12 +410,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ===============================
-//    FONCTIONS D'INITIALISATION
-// ===============================
-
+// === FONCTIONS D'INITIALISATION ===
 function setupWeeklyChallenge() {
-    // Fonction utilitaire pour obtenir le numéro de la semaine dans l'année
     function getWeekNumber(d) {
         d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
         d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
@@ -456,10 +422,8 @@ function setupWeeklyChallenge() {
 
     const today = new Date();
     const weekNumber = getWeekNumber(today);
-    // On utilise le modulo (%) pour boucler sur la liste si on a plus de semaines que de challenges
     const challenge = WEEKLY_CHALLENGES[weekNumber % WEEKLY_CHALLENGES.length];
 
-    // On met à jour le HTML avec les informations du challenge choisi
     const titleEl = document.getElementById('challenge-title');
     const imageEl = document.getElementById('challenge-image');
     const solutionTextEl = document.getElementById('challenge-solution-text');
