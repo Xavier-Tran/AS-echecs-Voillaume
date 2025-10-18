@@ -4,23 +4,23 @@
 
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
-  { pseudo: "Jean Neba", statut: "Élève" },                                     //Jean Neba, G, TG4
-  { pseudo: "Shadow", statut: "Enseignant", startElo: 1773 },                   //Xavier tran
-  { pseudo: "ÉlèveDuRoi", statut: "Élève" },                                    //El-Amir Ali, G, 1G1
-  { pseudo: "BlacKHawK5", statut: "Élève" },                                    //Rayan Benzenati, G, 1G1
-  { pseudo: "Razvan Craciun", statut: "Élève" },                                //Razvan Craciun, G, TG7
-  { pseudo: "HugoleMéchant9315", statut: "Élève" },                             //Hugo Tokiniaina-Nazim, G, 1G1
-  { pseudo: "MHMD", statut: "Élève" },                                          //Mahmoud Ait-Ouaret, G, 1STI2D2
-  { pseudo: "LUCKYBOY", statut: "Élève" },                                      //Adama Basse, G, 1TSCRSA
-  { pseudo: "P2N", statut: "Élève" },                                           //Paul-Noah Mondelice, G, 1TSCRSA
-  { pseudo: "RSK", statut: "Élève" },                                           //Ryan Stary, G, 1TSCRSA
-  { pseudo: "La-plume-44", statut: "Élève" },                                   //Soufian Bouzerz, G, 1G7
-  { pseudo: "Moham", statut: "Élève" },                                         //Mohamed-Adam Haouhaou, G, 1G1
-  { pseudo: "Yloria", statut: "Enseignant", startElo: 1299 },                   //Rémi Courouble
-  { pseudo: "slenius", statut: "Enseignant", startElo: 1299 },                  //Brian Phrakousonh
-  { pseudo: "rayane3000kens", statut: "Élève" },                                //Rayane Zenati, G
-  { pseudo: "Youssef Moharram", statut: "Élève" },                              //Youssef Moharram, G
-  { pseudo: "Massi Djebir", statut: "Élève" },                                  //Massi Djebir, G
+  { pseudo: "Jean Neba", statut: "Élève" },
+  { pseudo: "Shadow", statut: "Enseignant", startElo: 1773 },
+  { pseudo: "ÉlèveDuRoi", statut: "Élève" },
+  { pseudo: "BlacKHawK5", statut: "Élève" },                                
+  { pseudo: "Razvan Craciun", statut: "Élève" }, 
+  { pseudo: "HugoleMéchant9315", statut: "Élève" },
+  { pseudo: "MHMD", statut: "Élève" },
+  { pseudo: "LUCKYBOY", statut: "Élève" },
+  { pseudo: "P2N", statut: "Élève" },
+  { pseudo: "RSK", statut: "Élève" },
+  { pseudo: "La-plume-44", statut: "Élève" },
+  { pseudo: "Moham", statut: "Élève" },
+  { pseudo: "Yloria", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "slenius", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "rayane3000kens", statut: "Élève" },
+  { pseudo: "Youssef Moharram", statut: "Élève" },
+  { pseudo: "Massi Djebir", statut: "Élève" },
   ];
 
 // === HISTORIQUE DES MATCHS ===
