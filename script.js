@@ -70,6 +70,57 @@ const ALL_BADGES = {
     ]
 };
 
+const WEEKLY_CHALLENGES = [
+    {
+        title: "Les Noirs jouent et gagnent du matériel.",
+        image: "images/enigmes/challenge_1.jpg",
+        solutionText: "1. ... Txh3+<br />2. Rg1 Tg3!<br />3. Dxg3 ... (sacrifice de la Dame pour éviter le mat)",
+        solutionImage: "images/enigmes/challenge_1_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent du matériel.",
+        image: "images/enigmes/challenge_2.jpg",
+        solutionText: "1. Dxd8+ Rxd8 (seul coup possible)<br />2. Ff4+ ... (échec à la découverte et on récupère la dame noire au prochain coup)",
+        solutionImage: "images/enigmes/challenge_2_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 2 coups.",
+        image: "images/enigmes/challenge_3.jpg",
+        solutionText: "1. Ta6 ... (seul coup qui gagne).<br />1. ... bxa6<br />.2. b7#",
+        solutionImage: "images/enigmes/challenge_3_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent gagnent en 1 coup.",
+        image: "images/enigmes/challenge_4.jpg",
+        solutionText: "1. O-O-O# (grand roque)",
+        solutionImage: "images/enigmes/challenge_4_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 4 coups.",
+        image: "images/enigmes/challenge_5.jpg",
+        solutionText: "1. Dxd7+ Rxd7 (si Rf8, Dxe7#)<br />2. Ff5+ Re8 (si Rc6, Fd7#)<br />3. Fd7+ Rf8 (ou Rd8)<br />4. Fxe7#",
+        solutionImage: "images/enigmes/challenge_5_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_6.jpg",
+        solutionText: "1. Dg8+ Txg8<br />2.Cxf7+ Rg7<br />3.Fh6#",
+        solutionImage: "images/enigmes/challenge_6_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_7.jpg",
+        solutionText: "1. Db6+ Fxb6<br />2. axb6 Rxb6<br />3. Fe3#",
+        solutionImage: "images/enigmes/challenge_7_solution.jpg"
+    },
+    {
+        title: "Les Blancs jouent gagnent en 2 coups.",
+        image: "images/enigmes/challenge_8.jpg",
+        solutionText: "1. Dxf5+ exf5<br />2. Tg8#",
+        solutionImage: "images/enigmes/challenge_8_solution.jpg"
+    }
+];
+
 // === FONCTIONS DE CALCUL ===
 function calculateNewElo(playerA, playerB, scoreA) {
     const eloA = playerA.elo;
@@ -360,46 +411,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // === FONCTIONS D'INITIALISATION ===
-async function setupWeeklyChallenge() {
+function setupWeeklyChallenge() {
+    function getWeekNumber(d) {
+        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        return weekNo;
+    }
+
+    const today = new Date();
+    const weekNumber = getWeekNumber(today);
+    const challenge = WEEKLY_CHALLENGES[weekNumber % WEEKLY_CHALLENGES.length];
+
     const titleEl = document.getElementById('challenge-title');
     const imageEl = document.getElementById('challenge-image');
     const solutionTextEl = document.getElementById('challenge-solution-text');
     const solutionImageEl = document.getElementById('challenge-solution-image');
 
-    if (!titleEl || !imageEl || !solutionTextEl || !solutionImageEl) {
-        console.error("ERREUR : Un ou plusieurs ID HTML pour le challenge sont introuvables. Vérifiez votre fichier HTML.");
-        return;
-    }
-
-    try {
-        const response = await fetch('https://lichess.org/api/puzzle/daily');
-        if (!response.ok) throw new Error('Réponse du réseau non valide');
-        const data = await response.json();
-
-        // On récupère les informations de base
-        const gameId = data.game.id;
-        const solution = data.puzzle.solution.join(' ');
-        const theme = data.puzzle.themes.join(', ').replace(/\b\w/g, l => l.toUpperCase());
-        
-        // On utilise la méthode officielle de Lichess pour savoir à qui de jouer
-        const turnColor = data.puzzle.player; 
-        const whoPlays = turnColor === 'white' ? 'Les Blancs' : 'Les Noirs';
-        const title = `${whoPlays} jouent et gagnent.`;
-
-        // Construction des URLs des images avec la bonne orientation
-        const imageUrl = `https://lichess.org/api/board/game/${gameId}.svg?color=${turnColor}`;
-        const solutionMove = data.puzzle.solution[0];
-        const solutionImageUrl = `https://lichess.org/api/board/game/${gameId}.svg?move=${solutionMove}&color=${turnColor}`;
-
-        // Mise à jour du HTML
-        titleEl.textContent = title;
-        imageEl.src = imageUrl;
-        solutionTextEl.innerHTML = `Thème : ${theme}<br>Solution : ${solution}`;
-        solutionImageEl.src = solutionImageUrl;
-
-    } catch (error) {
-        console.error("Impossible de charger le problème Lichess :", error);
-        titleEl.textContent = "Le problème du jour n'a pas pu être chargé.";
+    if (titleEl && imageEl && solutionTextEl && solutionImageEl) {
+        titleEl.textContent = challenge.title;
+        imageEl.src = challenge.image;
+        solutionTextEl.innerHTML = challenge.solutionText;
+        solutionImageEl.src = challenge.solutionImage;
     }
 }
 
