@@ -367,7 +367,7 @@ async function setupWeeklyChallenge() {
     const solutionImageEl = document.getElementById('challenge-solution-image');
 
     if (!titleEl || !imageEl || !solutionTextEl || !solutionImageEl) {
-        console.error("Un ou plusieurs éléments HTML pour le challenge sont introuvables. Vérifiez les ID.");
+        console.error("ERREUR : Un ou plusieurs ID HTML pour le challenge sont introuvables. Vérifiez votre fichier HTML.");
         return;
     }
 
@@ -381,8 +381,7 @@ async function setupWeeklyChallenge() {
         const solution = data.puzzle.solution.join(' ');
         const theme = data.puzzle.themes.join(', ').replace(/\b\w/g, l => l.toUpperCase());
         
-        // --- LA CORRECTION DÉFINITIVE EST ICI ---
-        // On utilise directement la clé "player" fournie par Lichess. C'est la méthode la plus fiable.
+        // On utilise la méthode officielle de Lichess pour savoir à qui de jouer
         const turnColor = data.puzzle.player; 
         const whoPlays = turnColor === 'white' ? 'Les Blancs' : 'Les Noirs';
         const title = `${whoPlays} jouent et gagnent.`;
@@ -391,7 +390,6 @@ async function setupWeeklyChallenge() {
         const imageUrl = `https://lichess.org/api/board/game/${gameId}.svg?color=${turnColor}`;
         const solutionMove = data.puzzle.solution[0];
         const solutionImageUrl = `https://lichess.org/api/board/game/${gameId}.svg?move=${solutionMove}&color=${turnColor}`;
-        // --- FIN DE LA CORRECTION ---
 
         // Mise à jour du HTML
         titleEl.textContent = title;
