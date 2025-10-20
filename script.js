@@ -72,125 +72,125 @@ const ALL_BADGES = {
 
 const WEEKLY_CHALLENGES = [
     {
-        title: "Les Noirs jouent et gagnent du matériel.",
-        image: "images/enigmes/challenge_1.webp",
-        solutionText: "1. ... Txh3+<br />2. Rg1 Tg3!<br />3. Dxg3 ... (sacrifice de la Dame pour éviter le mat)",
-        solutionImage: "images/enigmes/challenge_1_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent et gagnent du matériel.",
-        image: "images/enigmes/challenge_2.webp",
-        solutionText: "1. Dxd8+ Rxd8 (seul coup possible)<br />2. Ff4+ ... (échec à la découverte et on récupère la dame noire au prochain coup)",
-        solutionImage: "images/enigmes/challenge_2_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent et gagnent en 2 coups.",
-        image: "images/enigmes/challenge_3.webp",
-        solutionText: "1. Ta6 ... (seul coup qui gagne).<br />1. ... bxa6<br />.2. b7#",
-        solutionImage: "images/enigmes/challenge_3_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent gagnent en 1 coup.",
-        image: "images/enigmes/challenge_4.webp",
-        solutionText: "1. O-O-O# (grand roque)",
-        solutionImage: "images/enigmes/challenge_4_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent et gagnent en 4 coups.",
-        image: "images/enigmes/challenge_5.webp",
-        solutionText: "1. Dxd7+ Rxd7 (si Rf8, Dxe7#)<br />2. Ff5+ Re8 (si Rc6, Fd7#)<br />3. Fd7+ Rf8 (ou Rd8)<br />4. Fxe7#",
-        solutionImage: "images/enigmes/challenge_5_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent et gagnent en 3 coups.",
-        image: "images/enigmes/challenge_6.jpg",
-        solutionText: "1. Dg8+ Txg8<br />2.Cxf7+ Rg7<br />3.Fh6#",
-        solutionImage: "images/enigmes/challenge_6_solution.jpg"
-    },
-    {
-        title: "Les Blancs jouent et gagnent en 3 coups.",
-        image: "images/enigmes/challenge_7.webp",
-        solutionText: "1. Db6+ Fxb6<br />2. axb6 Rxb6<br />3. Fe3#",
-        solutionImage: "images/enigmes/challenge_7_solution.webp"
-    },
-    {
-        title: "Les Blancs jouent gagnent en 2 coups.",
-        image: "images/enigmes/challenge_8.webp",
-        solutionText: "1. Dxf5+ exf5<br />2. Tg8#",
-        solutionImage: "images/enigmes/challenge_8_solution.webp"
-    }
-    {
-        title: "Les Noirs jouent et gagnent en 1 coup.",
+        title: "(★) Les Noirs jouent et gagnent en 1 coup.",
         image: "images/enigmes/challenge_9.webp",
         solutionText: "1. ... Cge6#",
         solutionImage: "images/enigmes/challenge_9_solution.webp"
     },
     {
-        title: "Les Noirs jouent gagnent en 2 coups.",
+        title: "(★) Les Noirs jouent gagnent en 2 coups.",
         image: "images/enigmes/challenge_10.webp",
         solutionText: "1. ... Rd3<br />2. a8=D e2#",
         solutionImage: "images/enigmes/challenge_10_solution.webp"
-    }
+    },
     {
-        title: "Les Blancs jouent et gagnent en 2 coups.",
+        title: "(★★) Les Blancs jouent et gagnent en 2 coups.",
         image: "images/enigmes/challenge_11.webp",
-        solutionText: "1. De5+ Fe6 (seul coup possible)<br />2. <br />3. Dd6#",
+        solutionText: "1. De5+ Fe6 (seul coup possible)<br />2. Dd6#",
         solutionImage: "images/enigmes/challenge_11_solution.webp"
     },
     {
-        title: "Les Noirs jouent et gagnent en 2 coups.",
+        title: "(★★) Les Noirs jouent et gagnent en 2 coups.",
         image: "images/enigmes/challenge_12.webp",
         solutionText: "1. ... Dxg2+<br />2. Txg2 Txf1#",
         solutionImage: "images/enigmes/challenge_12_solution.webp"
     },
     {
-        title: "Les Blancs jouent et gagnent en 2 coups.",
+        title: "(★★★) Les Blancs jouent et gagnent en 2 coups.",
         image: "images/enigmes/challenge_13.webp",
         solutionText: "On voit que les Noirs peuvent mater avec la dame en g3 s'il n'y avait pas le pion en f2.<br />1. ... Cxf2+<br />2. Txf2 Dg3#",
         solutionImage: "images/enigmes/challenge_13_solution.webp"
     },
     {
-        title: "Les Noirs jouent gagnent la tour en 3 coups.",
+        title: "(★★) Les Noirs jouent gagnent la tour en 3 coups.",
         image: "images/enigmes/challenge_14.webp",
         solutionText: "1. ... Rf7<br />2. Th6 Rg7<br />3. Txh5 Txh5",
         solutionImage: "images/enigmes/challenge_14_solution.webp"
     },
     {
-        title: "Les Blancs jouent et font une fourchette.",
+        title: "(★★) Les Blancs jouent et font une fourchette.",
         image: "images/enigmes/challenge_15.webp",
         solutionText: "1. ... g3+<br />2. Re5 Cc4+",
         solutionImage: "images/enigmes/challenge_15_solution.webp"
     },
     {
-        title: "Les Blancs jouent et gagnent la Dame en 2 coups.",
+        title: "(★) Les Blancs jouent et gagnent la Dame en 2 coups.",
         image: "images/enigmes/challenge_16.jpg",
-        solutionText: "1. Dh8+ Rg6 (ou Re7)<br />2.Dxe5",
+        solutionText: "1. Dh8+ Rg6 (ou Re7)<br />2. Dxe5",
         solutionImage: "images/enigmes/challenge_16_solution.jpg"
     },
     {
-        title: "Les Noirs jouent et s'assurent la promotion du pion e.",
+        title: "(★) Les Noirs jouent et s'assurent la promotion du pion e.",
         image: "images/enigmes/challenge_17.webp",
         solutionText: "1. ... Rd2 (empêchant le roi blanc de passer devant le pion e et de le bloquer)<br />2. g4 e3 (le pion e ne peut plus être capturé car défendu par le roi noir)",
         solutionImage: "images/enigmes/challenge_17_solution.webp"
     },
     {
-        title: "Les Blancs jouent et s'assurent la promotion d'un pion.",
+        title: "(★★) Les Blancs jouent et s'assurent la promotion d'un pion.",
         image: "images/enigmes/challenge_18.webp",
         solutionText: "1. a5 bxa5 (si les Noirs ne prennent pas le pion, les Blancs jouent a6 et le pion est irrattrapable)<br />2. b6 Rc5<br />3. b7 Rc6<br />4. b8=D",
         solutionImage: "images/enigmes/challenge_18_solution.webp"
-    }
+    },
     {
-        title: "Les Noirs jouent et gagnent en 2 coups.",
+        title: "(★) Les Noirs jouent et gagnent en 2 coups.",
         image: "images/enigmes/challenge_19.webp",
         solutionText: "1. ... Dxf3+<br />2. Ff2 Dxf2#",
         solutionImage: "images/enigmes/challenge_19_solution.webp"
     },
     {
-        title: "Les Noirs jouent gagnent en 3 coups.",
+        title: "(★★) Les Noirs jouent gagnent en 3 coups.",
         image: "images/enigmes/challenge_20.webp",
         solutionText: "1. ... Tf7h7+<br />2. Dh2 Txh2+<br />3. Rxh2 Th8#",
         solutionImage: "images/enigmes/challenge_20_solution.webp"
-    }
+    },
+    {
+        title: "(★★★) Les Blancs jouent et gagnent du matériel.",
+        image: "images/enigmes/challenge_2.webp",
+        solutionText: "1. Dxd8+ Rxd8 (seul coup possible)<br />2. Ff4+ ... (échec à la découverte et on récupère la dame noire au prochain coup)",
+        solutionImage: "images/enigmes/challenge_2_solution.webp"
+    },
+    {
+        title: "(★★★) Les Blancs jouent et gagnent en 2 coups.",
+        image: "images/enigmes/challenge_3.webp",
+        solutionText: "1. Ta6 ... (seul coup qui gagne)<br />1. ... bxa6<br />2. b7#",
+        solutionImage: "images/enigmes/challenge_3_solution.webp"
+    },
+    {
+        title: "(★ ou ★★★) Les Blancs jouent gagnent en 1 coup.",
+        image: "images/enigmes/challenge_4.webp",
+        solutionText: "1. O-O-O# (grand roque)",
+        solutionImage: "images/enigmes/challenge_4_solution.webp"
+    },
+    {
+        title: "(★★★★) Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_6.jpg",
+        solutionText: "1. Dg8+ Txg8<br />2. Cxf7+ Rg7<br />3. Fh6#",
+        solutionImage: "images/enigmes/challenge_6_solution.jpg"
+    },
+    {
+        title: "(★★★) Les Blancs jouent gagnent en 2 coups.",
+        image: "images/enigmes/challenge_8.webp",
+        solutionText: "1. Dxf5+ exf5<br />2. Tg8#",
+        solutionImage: "images/enigmes/challenge_8_solution.webp"
+    },
+    {
+        title: "(★★★★) Les Blancs jouent et gagnent en 3 coups.",
+        image: "images/enigmes/challenge_7.webp",
+        solutionText: "1. Db6+ Fxb6<br />2. axb6 Rxb6<br />3. Fe3#",
+        solutionImage: "images/enigmes/challenge_7_solution.webp"
+    },
+    {
+        title: "(★★★★) Les Noirs jouent et gagnent du matériel.",
+        image: "images/enigmes/challenge_1.webp",
+        solutionText: "1. ... Txh3+<br />2. Rg1 Tg3!<br />3. Dxg3 ... (sacrifice de la Dame pour éviter le mat)",
+        solutionImage: "images/enigmes/challenge_1_solution.webp"
+    },
+    {
+        title: "(★★★★★) Les Blancs jouent et gagnent en 4 coups.",
+        image: "images/enigmes/challenge_5.webp",
+        solutionText: "1. Dxd7+ Rxd7 (si Rf8, Dxe7#)<br />2. Ff5+ Re8 (si Rc6, Fd7#)<br />3. Fd7+ Rf8 (ou Rd8)<br />4. Fxe7#",
+        solutionImage: "images/enigmes/challenge_5_solution.webp"
+    },
 ];
 
 // === FONCTIONS DE CALCUL ===
