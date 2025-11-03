@@ -4,11 +4,11 @@
 
 // === LISTE OFFICIELLE DES MEMBRES (ROSTER) ===
 const roster = [
-  { pseudo: "Jean Neba", statut: "Élève" },
+  { pseudo: "Jeano", statut: "Élève" },
   { pseudo: "Shadow", statut: "Enseignant", startElo: 1773 },
   { pseudo: "ÉlèveDuRoi", statut: "Élève" },
   { pseudo: "BlacKHawK5", statut: "Élève" },                                
-  { pseudo: "Razvan Craciun", statut: "Élève" }, 
+  { pseudo: "Leroi", statut: "Élève" }, 
   { pseudo: "HugoleMéchant9315", statut: "Élève" },
   { pseudo: "MHMD", statut: "Élève" },
   { pseudo: "LUCKYBOY", statut: "Élève" },
@@ -40,6 +40,11 @@ const matches = [
   { "id": 13, "date": "2025-10-15", "player1": "slenius", "player2": "ÉlèveDuRoi", "result": "win" },
   { "id": 14, "date": "2025-10-15", "player1": "rayane3000kens", "player2": "RSK", "result": "win" },
   { "id": 15, "date": "2025-10-15", "player1": "Youssef Moharram", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 16, "date": "2025-11-03", "player1": "ÉlèveDuRoi", "player2": "rayane3000kens", "result": "win" },
+  { "id": 17, "date": "2025-11-03", "player1": "ÉlèveDuRoi", "player2": "P2N", "result": "win" },
+  { "id": 18, "date": "2025-11-03", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 19, "date": "2025-11-03", "player1": "Shadow", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 20, "date": "2025-11-03", "player1": "RSK", "player2": "P2N", "result": "win" },
 ];
 
 let joueurs = [];
