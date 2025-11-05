@@ -429,7 +429,7 @@ function displayPlayerProfile(player) {
     
     const trophiesContainer = document.getElementById('player-trophies-content');
     if (trophiesContainer) {
-        trophiesContainer.innerHTML = `<div class="bg-charcoal rounded-lg p-4 text-center"><div class="text-lg font-bold text-sandy">Le Rival</div><div class="text-2xl text-ivory mt-2">${stats.rival}</div><div class="text-sm text-ivory/80">Adversaire le plus fréquent</div></div><div class="bg-charcoal rounded-lg p-4 text-center"><div class="text-lg font-bold text-sandy">Plus Grande Surprise</div><div class="text-2xl text-ivory mt-2">N/A</div><div class="text-sm text-ivory/80">Victoire la plus marquante</div></div>`;
+        trophiesContainer.innerHTML = `<div class="bg-charcoal rounded-lg p-4 text-center"><div class="text-lg font-bold text-sandy">Le Rival</div><div class="text-2xl text-ivory mt-2">${stats.rival}</div><div class="text-sm text-ivory/80">Adversaire le plus fréquent</div></div><div class="bg-charcoal rounded-lg p-4 text-center"><div class="text-lg font-bold text-sandy">Plus Grande Surprise</div><div class="text-2xl text-ivory mt-2">??</div></div>`;
     }
 }
 
