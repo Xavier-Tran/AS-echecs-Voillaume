@@ -21,8 +21,21 @@ const roster = [
   { pseudo: "rayaneZ", statut: "Élève" },
   { pseudo: "You.Mo", statut: "Élève", isPrivate: true },
   { pseudo: "Ma.Dje", statut: "Élève", isPrivate: true },
-  { pseudo: "Zo.Is", statut: "Élève", isPrivate: true },
+  { pseudo: "yuzveen", statut: "Élève", isPrivate: true },
   { pseudo: "YNS", statut: "Élève", isPrivate: true },
+  { pseudo: "Ademkid", statut: "Enseignant", startElo: 1299 },
+  { pseudo: "SHIFTY", statut: "Élève" },
+  { pseudo: "Hi.Dra", statut: "Élève" },
+  { pseudo: "linh", statut: "Élève", isPrivate: true },
+  { pseudo: "Mrw-b", statut: "Élève", isPrivate: true },
+  { pseudo: "M3KS", statut: "Élève", isPrivate: true },
+  { pseudo: "webnigin", statut: "Élève" },
+  { pseudo: "RORO", statut: "Élève", isPrivate: true },
+  { pseudo: "Sa.Di", statut: "Élève" },
+  { pseudo: "cinnamon", statut: "Élève", isPrivate: true },
+  { pseudo: "cgln8", statut: "Élève" },
+  { pseudo: "Che.Hi", statut: "Élève" },
+  { pseudo: "Ray.Scan", statut: "Élève" },
   ];
 
 // === HISTORIQUE DES MATCHS ===
@@ -50,6 +63,10 @@ const matches = [
   { "id": 21, "date": "2025-11-05", "player1": "slenius", "player2": "P2N", "result": "win" },
   { "id": 22, "date": "2025-11-05", "player1": "RSK", "player2": "P2N", "result": "draw" },
   { "id": 23, "date": "2025-11-05", "player1": "LUCKYBOY", "player2": "P2N", "result": "draw" },
+  { "id": 24, "date": "2025-11-10", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 25, "date": "2025-11-10", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 26, "date": "2025-11-10", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 27, "date": "2025-11-10", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
 ];
 
 let joueurs = [];
