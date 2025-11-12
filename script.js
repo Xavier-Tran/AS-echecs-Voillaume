@@ -25,7 +25,7 @@ const roster = [
   { pseudo: "YNS", statut: "Élève", isPrivate: true },
   { pseudo: "Ademkid", statut: "Enseignant", startElo: 1299 },
   { pseudo: "SHIFTY", statut: "Élève" },
-  { pseudo: "Hi.Dra", statut: "Élève" },
+  { pseudo: "bam", statut: "Élève" },
   { pseudo: "linh", statut: "Élève", isPrivate: true },
   { pseudo: "Mrw-b", statut: "Élève", isPrivate: true },
   { pseudo: "M3KS", statut: "Élève", isPrivate: true },
@@ -67,6 +67,11 @@ const matches = [
   { "id": 25, "date": "2025-11-10", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
   { "id": 26, "date": "2025-11-10", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
   { "id": 27, "date": "2025-11-10", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 28, "date": "2025-11-12", "player1": "P2N", "player2": "RSK", "result": "win" },
+  { "id": 29, "date": "2025-11-12", "player1": "RSK", "player2": "P2N", "result": "win" },
+  { "id": 30, "date": "2025-11-12", "player1": "RSK", "player2": "P2N", "result": "win" },
+  { "id": 31, "date": "2025-11-12", "player1": "RSK", "player2": "P2N", "result": "win" },
+  { "id": 32, "date": "2025-11-12", "player1": "slenius", "player2": "Shadow", "result": "win" },
 ];
 
 let joueurs = [];
