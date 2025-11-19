@@ -153,9 +153,9 @@ const WEEKLY_CHALLENGES = [
     },
     {
         title: "(★) Les Blancs jouent et gagnent la Dame en 2 coups.",
-        image: "images/enigmes/challenge_16.jpg",
+        image: "images/enigmes/challenge_16.webp",
         solutionText: "1. Dh8+ Rg6 (ou Re7)<br />2. Dxe5",
-        solutionImage: "images/enigmes/challenge_16_solution.jpg"
+        solutionImage: "images/enigmes/challenge_16_solution.webp"
     },
     {
         title: "(★) Les Noirs jouent et s'assurent la promotion du pion e.",
