@@ -40,6 +40,7 @@ const roster = [
   { pseudo: "lakshmanan", statut: "Élève" },
   { pseudo: "Ra.El", statut: "Élève" },
   { pseudo: "Tho.Loy", statut: "Élève" },
+  { pseudo: "Id.Aid", statut: "Élève" },
   ];
 
 // === HISTORIQUE DES MATCHS ===
@@ -78,6 +79,9 @@ const matches = [
   { "id": 32, "date": "2025-11-12", "player1": "slenius", "player2": "Shadow", "result": "win" },
   { "id": 33, "date": "2025-11-19", "player1": "La-plume-44", "player2": "RSK", "result": "win" },
   { "id": 34, "date": "2025-11-19", "player1": "ÉlèveDuRoi", "player2": "rayaneZ", "result": "win" },
+  { "id": 35, "date": "2025-11-26", "player1": "RSK", "player2": "P2N", "result": "win" },
+  { "id": 36, "date": "2025-11-26", "player1": "LUCKYBOY", "player2": "P2N", "result": "win" },
+  { "id": 37, "date": "2025-11-26", "player1": "RSK", "player2": "LUCKYBOY", "result": "win" },
 ];
 
 let joueurs = [];
