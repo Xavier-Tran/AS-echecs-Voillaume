@@ -109,6 +109,7 @@ const matches = [
   { "id": 59, "date": "2025-12-10", "player1": "LUCKYBOY", "player2": "Moham", "result": "win" },
   { "id": 60, "date": "2025-12-10", "player1": "rayaneZ", "player2": "Weyweyy", "result": "win" },
   { "id": 61, "date": "2025-12-10", "player1": "RSK", "player2": "BlacKHawK5", "result": "win" },
+  { "id": 62, "date": "2026-01-11", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
 ];
 
 let joueurs = [];
