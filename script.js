@@ -115,6 +115,9 @@ const matches = [
   { "id": 65, "date": "2026-01-11", "player1": "RSK", "player2": "P2N", "result": "win" },
   { "id": 66, "date": "2025-02-04", "player1": "Shadow", "player2": "SHIFTY", "result": "win" },
   { "id": 67, "date": "2025-02-04", "player1": "Shadow", "player2": "SHIFTY", "result": "win" },
+  { "id": 68, "date": "2025-03-09", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 69, "date": "2025-03-09", "player1": "P2N", "player2": "LUCKYBOY", "result": "win" },
+  { "id": 70, "date": "2025-03-09", "player1": "RSK", "player2": "ÉlèveDuRoi", "result": "win" },
 ];
 
 let joueurs = [];
