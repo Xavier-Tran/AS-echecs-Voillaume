@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="images/site.webmanifest" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P034GCEPSR"></script>
@@ -30,6 +30,7 @@
             <div class="hidden lg:flex space-x-6">
                 <a href="#accueil" class="nav-link text-ivory hover:text-sandy">Accueil</a>
                 <a href="#evenements" class="nav-link text-ivory hover:text-sandy">Événements</a>
+                <a href="tournoi.html" class="nav-link text-ivory hover:text-sandy transition-colors duration-200">Tournoi</a>
                 <a href="#cours" class="nav-link text-ivory hover:text-sandy">Cours</a>
                 <a href="#challenge" class="nav-link text-ivory hover:text-sandy">Challenge</a>
                 <a href="#scores" class="nav-link text-ivory hover:text-sandy">Scores</a>
@@ -45,6 +46,7 @@
         <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-48 bg-charcoal-light p-2 shadow-lg z-40 rounded-lg border border-ivory/10">
             <a href="#accueil" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Accueil</a>
             <a href="#evenements" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Événements</a>
+            <a href="tournoi.html" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Tournoi</a>
             <a href="#cours" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Cours</a>
             <a href="#challenge" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Challenge</a>
             <a href="#scores" class="block py-2 px-2 text-ivory hover:text-sandy hover:bg-charcoal rounded-md transition-colors duration-200">Scores</a>
@@ -65,35 +67,41 @@
     <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Nos Événements</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
-        <h3 class="text-2xl font-bold text-sandy mb-4">Informations du club</h3>
-        <p class="text-ivory/90 mb-4">
-          Tournoi interne le lundi 08/12 et mercredi 10/12.
-          Fermeture du club du mercredi 17/12 (semaine Bac blanc) jusqu'à la rentrée 2026.  
-        </p>
+        <h3 class="text-2xl font-bold text-sandy mb-4">Informations</h3>
+        <p class="text-sm text-ivory">Reprise le lundi 04 mai.</p>
+        <p class="text-sm text-ivory">Fermetures exceptionnelles les mercredis 06 et 13 mai.</p>
+        <p class="text-sm text-ivory mb-4">Fin de l'AS Club Échecs pour l'année en cours: mercredi 27 mai.</p>
         <img src="images/que_fait_on_2.webp" alt="Jeu libre" class="rounded-lg mb-4 w-full object-cover" />
+        <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
+        <p class="text-sm text-ivory">Lieu : Foyer des élèves, RdC bâtiment C</p> 
       </div>
-      
+
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
         <h3 class="text-2xl font-bold text-sandy mb-4">Inscriptions: Pensez à LABAZ</h3>
         <p class="text-ivory/90 mb-4">
           Avec l'application gratuite LABAZ, les élèves entre 15 et 17 ans peuvent adhérer à l'AS du lycée sans dépenser le moindre euros ! Téléchargez l'application sur votre téléphone, inscrivez-vous avec vos identifiants "monlycée" et montrer le QR code à M. Tran ou à n'importe quel enseignant d'EPS.
         </p>
-        <img src="images/labaz.webp" alt="Inscriptions" class="rounded-lg mb-4 w-full object-cover" />
-        <p class="text-sm text-ivory">Date : Lundi et mercredi, 12h10-13h10</p>
-        <p class="text-sm text-ivory">Lieu : Foyer des élèves, RdC bâtiment C</p>  
+        <img src="images/labaz.webp" alt="Inscriptions" class="rounded-lg mb-4 w-full object-cover" /> 
       </div>
-      
+
       <div class="card rounded-xl p-6 shadow-lg bg-charcoal-light border-sandy">
         <h3 class="text-2xl font-bold text-sandy mb-4">Tournoi Du Lycée: 3ème édition</h3>
         <p class="text-ivory/90 mb-4">
-          Qui seront les prochains champions d'échecs du lycée ? Venez tester vos stratégies et affronter vos camarades dans une compétition amicale mais intense.
+          Qui seront les prochains champions d'échecs du lycée ?
         </p>
-        <img src="images/tournoi_3.webp" alt="Tournoi" class="rounded-lg mb-4 w-full object-cover" />
-        <p class="text-sm text-ivory">Date : A venir</p>
+        <img src="images/tournoi/t3_affiche.png" alt="Affiche Tournoi" class="mx-auto rounded-lg mb-4 object-cover"  />
+        <p class="text-sm text-ivory">Date : Mercredi 13 mai 2026, 13h30-17h</p>
         <p class="text-sm text-ivory">Lieu : Salle E</p>
+        <p class="text-sm text-ivory">Inscription par QR code sur l'affiche ou auprès de M. Tran</p>
+        <div class="flex justify-center mt-4">
+          <a href="tournoi.html" class="bg-sandy text-charcoal font-bold py-3 px-8 rounded-full shadow-lg border-2 border-sandy hover:bg-white hover:text-black hover:shadow-xl transition-all duration-300">
+            Accéder à la page
+          </a>
+        </div>
       </div>
       </div>
     </section>
+
 
 <section id="cours" class="py-16 bg-charcoal">
   <div class="container mx-auto px-4">
@@ -147,28 +155,70 @@
     </div>
 </section>
 
-    <section id="scores" class="py-16 bg-charcoal-light">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Classements & Scores</h2>
-        <div class="bg-charcoal rounded-xl shadow-lg p-6">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left table-fixed rounded min-w-[600px]">
-              <thead>
-                <tr class="bg-sandy text-charcoal rounded-xl">
-                  <th class="py-3 px-4 rounded-tl-lg">Classement</th>
-                  <th class="py-3 px-4">Pseudo</th>
-                  <th class="py-3 px-4">Élo V.</th>
-                  <th class="py-3 px-4">Statut</th>
-                  <th class="py-3 px-4 rounded-tr-lg">Rang</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboard-body">
-                </tbody>
-            </table>
-          </div>
-        </div>
+<section id="scores" class="py-16 bg-charcoal-light">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold section-title mb-8 text-center">Classement & Scores</h2>
+
+    <!-- Joueur le plus actif du mois -->
+    <div class="mb-10 p-6 bg-charcoal rounded-xl border border-sandy/40 text-center">
+      <h3 class="text-xl font-bold text-sandy mb-2">🏅 Joueur le plus actif ce mois-ci</h3>
+      <p id="most-active-player" class="text-ivory text-lg">Chargement...</p>
+    </div>
+
+    <!-- Deux tableaux côte à côte -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Tableau 1 : Top 5 tous joueurs -->
+      <div class="bg-charcoal rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-bold text-sandy mb-4 text-center">🏆 Top 5 du Club</h3>
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-ivory/20 text-sandy text-sm uppercase">
+              <th class="py-2 px-3">Classement</th>
+              <th class="py-2 px-3">Pseudo</th>
+              <th class="py-2 px-3">Élo</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-top5-all"></tbody>
+        </table>
       </div>
-    </section>
+
+      <!-- Tableau 2 : Top 5 élèves uniquement -->
+      <div class="bg-charcoal rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-bold text-sandy mb-4 text-center">🎓 Top 5 Élèves</h3>
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-ivory/20 text-sandy text-sm uppercase">
+              <th class="py-2 px-3">Classement</th>
+              <th class="py-2 px-3">Pseudo</th>
+              <th class="py-2 px-3">Élo</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-top5-students"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Légende centrée sous les deux tableaux -->
+    <div class="mt-6 flex flex-wrap justify-center gap-6 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-orange-400"></span>
+        <span class="text-ivory/80">Enseignant</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-white"></span>
+        <span class="text-ivory/80">Élève</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-3 h-3 rounded-full bg-green-400"></span>
+        <span class="text-ivory/80">Autre</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   
     <section id="elo" class="py-16 bg-charcoal">
       <div class="container mx-auto px-4">
@@ -180,11 +230,12 @@
         <div class="space-y-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div id="player-stats-kpi" class="bg-charcoal-light rounded-xl p-6 shadow-lg grid grid-cols-2 gap-y-6 gap-x-4 items-center">
-              <div class="col-span-2 text-center mb-4">
-                <div class="text-lg font-bold text-sandy">Rang Actuel</div>
-                <div class="text-4xl font-bold text-ivory mt-1"><span id="stat-rank">--</span></div>
-              </div>
               <div class="grid grid-cols-2 gap-8">
+                
+                <div class="col-span-2 text-center mb-4">
+                    <div class="text-lg font-bold text-sandy">Classement</div>
+                    <div class="text-4xl font-bold text-ivory mt-1"><span id="stat-rank"></span></div>
+                </div>
                 
                 <div class="text-center">
                   <div class="text-3xl font-bold text-sandy"><span id="stat-total-games">--</span></div>
