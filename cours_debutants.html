@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
     <link rel="manifest" href="images/site.webmanifest" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P034GCEPSR"></script>
@@ -23,12 +23,26 @@
 
     <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
         <div class="container mx-auto px-6 py-1 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
+            <a href="index.html#accueil" class="flex items-center space-x-2">
                 <img src="images/favicon.svg" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
                 <span class="text-xl font-bold text-ivory">AS Échecs</span>
             </a>
-            <div>
-                <a href="index.html#cours" class="nav-link text-ivory hover:text-sandy">Retour aux Cours</a>
+            <div class="hidden lg:flex space-x-6">
+                <a href="index.html#accueil" class="nav-link text-ivory hover:text-sandy">Accueil</a>
+                <a href="index.html#evenements" class="nav-link text-ivory hover:text-sandy">Événements</a>
+                <a href="tournoi.html" class="nav-link text-ivory hover:text-sandy transition-colors duration-200">Tournoi</a>
+                <a href="index.html#cours" class="nav-link text-ivory hover:text-sandy">Cours</a>
+                <a href="index.html#challenge" class="nav-link text-ivory hover:text-sandy">Challenge</a>
+                <a href="index.html#scores" class="nav-link text-ivory hover:text-sandy">Scores</a>
+                <a href="index.html#elo" class="nav-link text-ivory hover:text-sandy">Progression</a>
+                <a href="bienfaits.html" class="nav-link text-ivory hover:text-sandy">Bienfaits</a>
+            </div>
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-ivory focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
