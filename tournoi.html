@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tournois - Club d'Échecs</title>
+  <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="images/site.webmanifest" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P034GCEPSR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P034GCEPSR');
+  </script>
+</head>
+  <style>
+    /* === CAROUSEL === */
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .carousel-slide {
+      min-width: 50%;
+      padding: 0 6px;
+      box-sizing: border-box;
+    }
+    .carousel-slide img,
+    .carousel-slide .photo-placeholder {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255,197,96,0.25);
+      display: block;
+    }
+    .carousel-slide .photo-placeholder {
+      background: rgba(255,197,96,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,197,96,0.4);
+      font-size: 1rem;
+      font-style: italic;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,197,96,0.15);
+      border: 1px solid rgba(255,197,96,0.4);
+      color: #ffc560;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+    .carousel-btn:hover { background: rgba(255,197,96,0.3); }
+    .carousel-btn.prev { left: 4px; }
+    .carousel-btn.next { right: 4px; }
+
+    /* === TOURNOI CARD === */
+    .tournoi-card {
+      background: var(--charcoal-light, #1a202c);
+      border: 1px solid rgba(255,197,96,0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .tournoi-title {
+      font-family: 'Playfair Display', serif;
+      color: #ffc560;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,197,96,0.2);
+    }
+    .section-label {
+      color: #ffc560;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* === AUDIO PLAYER === */
+    .audio-player {
+      background: rgba(255,197,96,0.06);
+      border: 1px solid rgba(255,197,96,0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .audio-title {
+      font-size: 0.85rem;
+      color: rgba(255,197,96,0.8);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+    .audio-btn {
+      background: rgba(255,197,96,0.15);
+      border: 1px solid rgba(255,197,96,0.4);
+      color: #ffc560;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .audio-btn:hover { background: rgba(255,197,96,0.3); }
+    .progress-container {
+      height: 4px;
+      background: rgba(255,197,96,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #ffc560;
+      width: 0%;
+      transition: width 0.3s linear;
+    }
+    .audio-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: rgba(247,247,241,0.5);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+
+<!-- ======= LIGHTBOX ======= -->
+<div id="lightbox" class="fixed inset-0 bg-black/90 z-[9999] hidden items-center justify-center p-4" onclick="closeLightbox()">
+  <button onclick="closeLightbox()" class="absolute top-4 right-6 text-white text-4xl font-bold hover:text-sandy transition-colors">&times;</button>
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain" onclick="event.stopPropagation()" />
+</div>
+
+<body class="bg-charcoal text-ivory">
+
+  <!-- ===== NAVIGATION ===== -->
+    <nav class="bg-charcoal-light shadow-lg sticky top-0 z-50 relative">
+        <div class="container mx-auto px-6 py-1 flex justify-between items-center">
+            <a href="index.html#accueil" class="flex items-center space-x-2">
+                <img src="images/favicon.svg" alt="Logo Club d'Échecs" class="rounded-full w-10 h-10" />
+                <span class="text-xl font-bold text-ivory">AS Échecs</span>
+            </a>
+            <div class="hidden lg:flex space-x-6">
+                <a href="index.html#accueil" class="nav-link text-ivory hover:text-sandy">Accueil</a>
+                <a href="index.html#evenements" class="nav-link text-ivory hover:text-sandy">Événements</a>
+                <a href="tournoi.html" class="nav-link text-ivory hover:text-sandy transition-colors duration-200">Tournoi</a>
+                <a href="index.html#cours" class="nav-link text-ivory hover:text-sandy">Cours</a>
+                <a href="index.html#challenge" class="nav-link text-ivory hover:text-sandy">Challenge</a>
+                <a href="index.html#scores" class="nav-link text-ivory hover:text-sandy">Scores</a>
+                <a href="index.html#elo" class="nav-link text-ivory hover:text-sandy">Progression</a>
+                <a href="bienfaits.html" class="nav-link text-ivory hover:text-sandy">Bienfaits</a>
+            </div>
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-ivory focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="py-16 text-center bg-charcoal">
+    <h1 class="text-4xl md:text-5xl font-bold text-sandy mb-4" style="font-family:'Playfair Display',serif;">🏆 Tournois du Club</h1>
+    <p class="text-ivory/70 text-lg">Retrouvez ici les affiches, résultats et photos de chaque édition.</p>
+  </header>
+
+  <!-- ===== CONTENU TOURNOIS ===== -->
+  <main class="container mx-auto px-4 pb-20" style="max-width:900px;">
+
+    <!-- ======= TOURNOI #3 ======= -->
+    <div class="tournoi-card">
+      <h2 class="tournoi-title">Tournoi #3 - 2025/2026</h2>
+
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Colonne gauche : Affiche + Audio -->
+        <div class="md:w-56 flex-shrink-0 flex flex-col gap-4">
+          <div>
+            <img src="images/tournoi/t3_affiche.png" alt="Affiche Tournoi #3"
+              class="w-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
+              style="aspect-ratio: 2/3; max-height: 420px;"
+              onclick="openLightbox(this)" />         
+          </div>
+
+          <!-- Lecteur audio -->
+          <div>
+            <audio id="audio-t3" src="audio/shadowboard.mp3" preload="metadata"></audio>
+            <div class="audio-player">
+              <div class="audio-title">Shadowboard</div>
+              <div class="audio-controls">
+                <button class="audio-btn" id="stop-t3" title="Stop">⏹</button>
+                <button class="audio-btn" id="play-t3" title="Play/Pause">▶</button>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="progress-t3"></div>
+              </div>
+              <div class="audio-time">
+                <span id="current-t3">0:00</span>
+                <span id="duration-t3">0:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite : À propos + Photos -->
+        <div class="flex-1 flex flex-col gap-6">
+
+          <!-- À propos -->
+          <div>
+            <p class="text-ivory/80 text-sm leading-relaxed">
+              Cette année, nous mettons à l'honneur l'esprit d'équipe avec une formule inédite : un tournoi par équipes de 3 joueurs !
+              Fini le classement individuel, ici c'est la performance collective qui prime. Les résultats de chaque membre de l'équipe sont comptabilisés pour déterminer le classement final. Victoires, défaites, émotions... tout se vit ensemble !
+            </p>
+          </div>
+
+          <!-- Photos carousel -->
+          <div>
+            <div class="carousel-wrapper" id="carousel-t3">
+              <button class="carousel-btn prev" data-carousel="t3">‹</button>
+              <div class="carousel-track" id="track-t3">
+                <div class="carousel-slide">
+                  <div class="photo-placeholder">Photo 1 à venir</div>
+                  <!-- <img src="images/tournois/t3_photo1.webp" alt="Photo 1"> -->
+                </div>
+                <div class="carousel-slide">
+                  <div class="photo-placeholder">Photo 2 à venir</div>
+                  <!-- <img src="images/tournois/t3_photo2.webp" alt="Photo 2"> -->
+                </div>
+              </div>
+              <button class="carousel-btn next" data-carousel="t3">›</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= TOURNOI #2 ======= -->
+    <div class="tournoi-card">
+      <h2 class="tournoi-title">Tournoi #2 - 2024/2025</h2>
+
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Colonne gauche : Affiche -->
+        <div class="md:w-56 flex-shrink-0">
+          <img src="images/tournoi/t2_affiche.png" alt="Affiche Tournoi #2" 
+            class="w-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
+            style="aspect-ratio: 2/3; max-height: 420px;"
+            onclick="openLightbox(this)" />
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="flex-1 flex flex-col gap-6">
+          <div>
+            <p class="text-ivory/80 text-sm leading-relaxed">
+              Pour cette 2ème édition, l'AS Club Échecs de Voillaume vous propose une nouvelle formule : un double tournoi pour satisfaire tous les joueurs, quel que soit leur niveau ! Que vous fassiez vos premiers pas sur l'échiquier ou que vous soyez un joueur aguerri, il y a une place pour vous dans ce tournoi !
+            </p>
+          </div>
+
+          <div>
+            <div class="carousel-wrapper" id="carousel-t2">
+              <button class="carousel-btn prev" data-carousel="t2">‹</button>
+              <div class="carousel-track" id="track-t2">
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t2_résultat1.PNG" alt="Résultats Champions"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t2_résultat2.PNG" alt="Résultats Challengers"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t2_photo1.jpg" alt="Photo 1"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t2_photo2.jpg" alt="Photo 2"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+              </div>
+              <button class="carousel-btn next" data-carousel="t2">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= UNSS ======= -->
+    <div class="tournoi-card">
+      <h2 class="tournoi-title">UNSS - 2023/2024</h2>
+
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Colonne gauche : Affiche -->
+        <div class="md:w-56 flex-shrink-0">
+          <img src="images/tournoi/unss_affiche.jpg" alt="Affiche Tournoi #1"
+            class="w-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
+            style="aspect-ratio: 2/3; max-height: 420px;"
+            onclick="openLightbox(this)" />        
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="flex-1 flex flex-col gap-6">
+          <div>
+            <p class="text-ivory/80 text-sm leading-relaxed">
+              Dès leur première participation au championnat académique UNSS, nos élèves ont brillamment représenté le lycée Voillaume en décrochant une remarquable 3ème place. Une belle performance qui leur a permis de poursuivre l'aventure jusqu'aux inter-académiques, où leur parcours s'est arrêté.
+              C'est avec fierté et enthousiasme que nous les avons accompagnés tout au long de cette belle expérience!
+            </p>
+          </div>
+
+          <div>
+            <div class="carousel-wrapper" id="carousel-unss">
+              <button class="carousel-btn prev" data-carousel="unss">‹</button>
+              <div class="carousel-track" id="track-unss">
+                <div class="carousel-slide">
+                  <img src="images/tournoi/unss_photo1.jpg" alt="Photo 1"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/unss_photo2.jpg" alt="Photo 2"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/unss_photo3.jpg" alt="Photo 3"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+              </div>
+              <button class="carousel-btn next" data-carousel="unss">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= TOURNOI #1 ======= -->
+    <div class="tournoi-card">
+      <h2 class="tournoi-title">Tournoi #1 - 2023/2024</h2>
+
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Colonne gauche : Affiche -->
+        <div class="md:w-56 flex-shrink-0">
+          <img src="images/tournoi/t1_affiche.jpg" alt="Affiche Tournoi #1"
+            class="w-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
+            style="aspect-ratio: 2/3; max-height: 420px;"
+            onclick="openLightbox(this)" />         
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="flex-1 flex flex-col gap-6">
+          <div>
+            <p class="text-ivory/80 text-sm leading-relaxed">
+              Pour fêter son ouverture cette année, l'AS Club Échecs de Voillaume organise un premier grand tournoi du lycée. Les élèves et les enseignants y sont invités pour s'affronter et partager un moment de convivialité en dehors des salles de cours!
+            </p>
+          </div>
+
+          <div>
+            <div class="carousel-wrapper" id="carousel-t1">
+              <button class="carousel-btn prev" data-carousel="t1">‹</button>
+              <div class="carousel-track" id="track-t1">
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t1_photo1.jpg" alt="Photo 1"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t1_photo2.jpg" alt="Photo 2"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t1_photo3.jpg" alt="Photo 3"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t1_photo4.jpg" alt="Photo 4"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/tournoi/t1_photo5.jpg" alt="Photo 5"
+                    class="rounded-lg mb-4 w-full aspect-square object-cover md:w-3/5 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                    onclick="openLightbox(this)" />
+                </div>
+              </div>
+              <button class="carousel-btn next" data-carousel="t1">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-charcoal-light text-ivory text-center py-6">
+    <div class="space-y-2">
+      <p>&copy; 2025 AS Club Échecs du Lycée Voillaume. Tous droits réservés.</p>
+      <p class="text-sm text-ivory/70">
+        <a href="politique-confidentialite.html" class="hover:underline hover:text-sandy">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ======= LIGHTBOX =======
+function openLightbox(img) {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lb.classList.remove('hidden');
+  lb.classList.add('flex');
+  document.body.style.overflow = 'hidden'; // bloque le scroll
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('hidden');
+  lb.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+
+// Fermeture avec la touche Échap
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+    // ===== CAROUSEL =====
+    // Chaque carousel a un index courant (0 ou 1, puisque 2 slides)
+    const carousels = {};
+
+    document.querySelectorAll('.carousel-btn').forEach(btn => {
+      const id = btn.dataset.carousel;
+      if (!carousels[id]) carousels[id] = 0;
+
+      btn.addEventListener('click', () => {
+        const track = document.getElementById(`track-${id}`);
+        const slides = track.querySelectorAll('.carousel-slide');
+        const total = slides.length; // 2
+
+        if (btn.classList.contains('next')) {
+          carousels[id] = (carousels[id] + 1) % total;
+        } else {
+          carousels[id] = (carousels[id] - 1 + total) % total;
+        }
+
+        // Décale d'un slide (chaque slide = 50% de la largeur)
+        track.style.transform = `translateX(-${carousels[id] * 50}%)`;
+      });
+    });
+
+    // ===== AUDIO PLAYER T3 =====
+    (function() {
+      const audio = document.getElementById('audio-t3');
+      const playBtn = document.getElementById('play-t3');
+      const stopBtn = document.getElementById('stop-t3');
+      const progressBar = document.getElementById('progress-t3');
+      const currentEl = document.getElementById('current-t3');
+      const durationEl = document.getElementById('duration-t3');
+
+      function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${m}:${sec.toString().padStart(2, '0')}`;
+      }
+
+      audio.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+          progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+          currentEl.textContent = formatTime(audio.currentTime);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        playBtn.textContent = '▶';
+        audio.currentTime = 0;
+        progressBar.style.width = '0%';
+        currentEl.textContent = '0:00';
+      });
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+        else { audio.pause(); playBtn.textContent = '▶'; }
+      });
+
+      stopBtn.addEventListener('click', () => {
+        audio.pause();
+        audio.currentTime = 0;
+        playBtn.textContent = '▶';
+        progressBar.style.width = '0%';
+        currentEl.textContent = '0:00';
+      });
+    })();
+  </script>
+</body>
+</html>
