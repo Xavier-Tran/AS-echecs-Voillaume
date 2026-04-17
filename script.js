@@ -19,7 +19,7 @@ const roster = [
   { pseudo: "Yloria", statut: "Enseignant", startElo: 1299 },
   { pseudo: "slenius", statut: "Enseignant", startElo: 1299 },
   { pseudo: "rayaneZ", statut: "Élève" },
-  { pseudo: "YSF_93", statut: "Élève", isPrivate: true },
+  { pseudo: "YSF_93", statut: "Élève" },
   { pseudo: "Weyweyy", statut: "Élève", isPrivate: true },
   { pseudo: "yuzveen", statut: "Élève", isPrivate: true },
   { pseudo: "YNS", statut: "Élève", isPrivate: true },
@@ -400,9 +400,31 @@ function displayPlayerProfile(player) {
     allContainers.forEach(container => { if (container) container.style.display = 'block'; });
     
     const stats = calculatePlayerStats(player.pseudo);
-    const rang = getRankFromElo(player.elo);
-    
-    document.getElementById('stat-rank').textContent = rang;
+    // Classement du joueur
+    try {
+        const publicJoueurs = joueurs.filter(j => !j.isPrivate);
+        publicJoueurs.sort((a, b) => b.elo - a.elo);
+        const rankIndex = publicJoueurs.findIndex(j => j.pseudo === player.pseudo);
+        const rankDisplay = rankIndex === -1 ? '--' : (rankIndex === 0 ? '1er' : `${rankIndex + 1}ème`);
+        const statRankEl = document.getElementById('stat-rank');
+        if (statRankEl) statRankEl.textContent = rankDisplay;
+    } catch(e) {
+    console.error('Erreur classement :', e);
+}
+
+    const publicJoueurs = joueurs.filter(j => !j.isPrivate);
+    publicJoueurs.sort((a, b) => b.elo - a.elo);
+    const rankIndex = publicJoueurs.findIndex(j => j.pseudo === player.pseudo);
+
+    function formatRank(n) {
+        if (n === 0) return '1er';
+        return `${n + 1}ème`;
+    }
+
+    const rankDisplay = rankIndex === -1 ? '--' : formatRank(rankIndex);
+    const statRankEl = document.getElementById('stat-rank');
+    if (statRankEl) statRankEl.textContent = rankDisplay; 
+
     document.getElementById('stat-total-games').textContent = stats.totalGames;
     document.getElementById('stat-win-rate').textContent = stats.winRate;
     document.getElementById('stat-best-elo').textContent = stats.bestElo;
@@ -501,29 +523,158 @@ function displayPlayerProfile(player) {
     }
 }
 
+// === UTILITAIRE : ordinal français ===
+function toOrdinal(n) {
+  return n === 1 ? '1er' : `${n}ème`;
+}
+
+// === UTILITAIRE : couleur pseudo selon statut ===
+function getPseudoColor(pseudo) {
+  const member = roster.find(r => r.pseudo === pseudo);
+  if (!member) return 'text-ivory';
+  if (member.statut === 'Enseignant') return 'text-orange-400';
+  if (member.statut === 'Élève') return 'text-ivory';
+  return 'text-green-400'; // autres
+}
+
+// === MISE À JOUR DU CLASSEMENT COMPLET ===
 function updateLeaderboardDisplay() {
-  const tableBody = document.querySelector('#leaderboard-body');
-  if (!tableBody) return;
+  // --- Helpers ---
+  function getPseudoColor(pseudo) {
+    const member = roster.find(r => r.pseudo === pseudo);
+    if (!member) return 'text-white';
+    if (member.statut === 'Enseignant') return 'text-orange-400';
+    if (member.statut === 'Élève') return 'text-white';
+    return 'text-green-400'; // AED ou autre
+  }
 
-  const publicJoueurs = joueurs.filter(joueur => !joueur.isPrivate);
+  function toOrdinal(n) {
+    if (n === 1) return '1er';
+    return `${n}ème`;
+  }
 
-  publicJoueurs.sort((a, b) => b.elo - a.elo);
-  
-  tableBody.innerHTML = '';
-  publicJoueurs.forEach((joueur, index) => {
-    const nameClass = (index + 1) === 1 ? 'text-sandy font-semibold' : 'text-ivory';
-    const rang = getRankFromElo(joueur.elo);
-    const playerRow = `
+  function buildRows(tbodyId, playerList) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    playerList.forEach((joueur, index) => {
+      const colorClass = getPseudoColor(joueur.pseudo);
+      tbody.innerHTML += `
+        <tr class="border-b border-ivory/20">
+          <td class="py-3 px-3 text-ivory">${toOrdinal(index + 1)}</td>
+          <td class="py-3 px-3 ${colorClass} font-semibold">${joueur.pseudo}</td>
+          <td class="py-3 px-3 text-ivory">${joueur.elo}</td>
+        </tr>`;
+    });
+  }
+
+  // Joueurs publics triés par Élo
+  const publicJoueurs = joueurs
+    .filter(j => !j.isPrivate)
+    .sort((a, b) => b.elo - a.elo);
+
+  // Top 5 du club (tous statuts)
+  const top5All = publicJoueurs.slice(0, 5);
+  buildRows('leaderboard-top5-all', top5All);
+
+  // Top 5 élèves uniquement
+  const top5Students = publicJoueurs
+    .filter(j => {
+      const member = roster.find(r => r.pseudo === j.pseudo);
+      return member && member.statut === 'Élève';
+    })
+    .slice(0, 5);
+  buildRows('leaderboard-top5-students', top5Students);
+
+  // Joueur le plus actif
+  updateMostActivePlayer();
+}
+
+// === TOP 5 TOUS JOUEURS ===
+function updateTop5All(sortedPublicJoueurs) {
+  const tbody = document.getElementById('leaderboard-top5-all');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  const top5 = sortedPublicJoueurs.slice(0, 5);
+
+  top5.forEach((joueur, index) => {
+    const globalRank = index + 1; // ils sont déjà triés globalement
+    const colorClass = getPseudoColor(joueur.pseudo);
+    tbody.innerHTML += `
       <tr class="border-b border-ivory/20">
-        <td class="py-4 px-4 text-ivory">${index + 1}</td>
-        <td class="py-4 px-4 ${nameClass}">${joueur.pseudo}</td>
-        <td class="py-4 px-4 text-ivory">${joueur.elo}</td>
-        <td class="py-4 px-4 text-ivory">${joueur.classe}</td>
-        <td class="py-4 px-4 text-ivory">${rang}</td>
+        <td class="py-3 px-3 text-ivory">${toOrdinal(globalRank)}</td>
+        <td class="py-3 px-3 ${colorClass} font-semibold">${joueur.pseudo}</td>
+        <td class="py-3 px-3 text-ivory">${joueur.elo}</td>
       </tr>`;
-    tableBody.innerHTML += playerRow;
   });
 }
+
+// === TOP 5 ÉLÈVES (avec rang global conservé) ===
+function updateTop5Students(sortedPublicJoueurs) {
+  const tbody = document.getElementById('leaderboard-top5-students');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+
+  // On récupère les élèves en conservant leur rang global
+  const studentsWithRank = sortedPublicJoueurs
+    .map((joueur, index) => ({ ...joueur, globalRank: index + 1 }))
+    .filter(joueur => {
+      const member = roster.find(r => r.pseudo === joueur.pseudo);
+      return member && member.statut === 'Élève';
+    })
+    .slice(0, 5);
+
+  studentsWithRank.forEach((joueur) => {
+    const colorClass = getPseudoColor(joueur.pseudo);
+    tbody.innerHTML += `
+      <tr class="border-b border-ivory/20">
+        <td class="py-3 px-3 text-ivory">${toOrdinal(joueur.globalRank)}</td>
+        <td class="py-3 px-3 ${colorClass} font-semibold">${joueur.pseudo}</td>
+        <td class="py-3 px-3 text-ivory">${joueur.elo}</td>
+      </tr>`;
+  });
+}
+
+// === JOUEUR LE PLUS ACTIF DU MOIS ===
+function updateMostActivePlayer() {
+  const el = document.getElementById('most-active-player');
+  if (!el) return;
+
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth(); // 0-indexé
+
+  // Compter les parties du mois en cours par joueur
+  const activityMap = {};
+
+  matches.forEach(match => {
+    const matchDate = new Date(match.date);
+    if (matchDate.getFullYear() === currentYear && matchDate.getMonth() === currentMonth) {
+      [match.player1, match.player2].forEach(pseudo => {
+        activityMap[pseudo] = (activityMap[pseudo] || 0) + 1;
+      });
+    }
+  });
+
+  const entries = Object.entries(activityMap);
+
+  if (entries.length === 0) {
+    el.textContent = 'Aucune partie enregistrée ce mois-ci. Allez jouer ! ♟️';
+    return;
+  }
+
+  // Trouver le max
+  entries.sort((a, b) => b[1] - a[1]);
+  const [topPseudo, topCount] = entries[0];
+
+  // Nom du mois en français
+  const monthName = now.toLocaleString('fr-FR', { month: 'long' });
+
+  el.innerHTML = `🎉 <span class="font-bold text-sandy">${topPseudo}</span> est le joueur le plus actif de ${monthName} avec <span class="font-bold text-sandy">${topCount} partie${topCount > 1 ? 's' : ''}</span> jouée${topCount > 1 ? 's' : ''} !`;
+}
+
 
 function refreshUI() {
     updateLeaderboardDisplay();
@@ -552,13 +703,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSolutionButton();
     setupAccordions();
 
-    if (document.getElementById('leaderboard-body')) {
-        processAllMatches();
-        updateLeaderboardDisplay();
-        setupProgressionSection();
-        setupWeeklyChallenge();
-    }
+    processAllMatches();
+    updateLeaderboardDisplay(); // ← plus de condition, on appelle directement
+    setupProgressionSection();
+    setupWeeklyChallenge();
 });
+
 
 // === FONCTIONS D'INITIALISATION ===
 function setupWeeklyChallenge() {
