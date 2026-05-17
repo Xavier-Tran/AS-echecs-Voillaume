@@ -21,7 +21,7 @@ const roster = [
   { pseudo: "rayaneZ", statut: "Élève" },
   { pseudo: "YSF_93", statut: "Élève" },
   { pseudo: "Weyweyy", statut: "Élève" },
-  { pseudo: "yuzveen", statut: "Élève", isPrivate: true, isChampion: true },
+  { pseudo: "yuzveen", statut: "Élève", isChampion: true },
   { pseudo: "YNS", statut: "Élève" },
   { pseudo: "Solytarius", statut: "Enseignant", startElo: 1299 },
   { pseudo: "SHIFTY", statut: "Élève" },
