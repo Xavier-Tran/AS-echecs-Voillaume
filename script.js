@@ -183,7 +183,7 @@ const ALL_BADGES = {
     ],
     platinum: [
         { id: 'elo_1800', name: 'Niveau Royal', desc: 'Atteindre 1800 Élo', icon: 'images/badges/roi.png', condition: (stats) => stats.bestElo >= 1800 },
-        { id: 'champion', name: 'Champion Absolu', desc: 'Gagner un tournoi majeur', icon: 'images/badges/coupe.png', condition: (stats, player) => player.isChampion === true },
+        { id: 'champion', name: 'Champion Absolu', desc: 'Gagner un tournoi majeur', icon: 'images/badges/coupe.png', condition: (stats, player) => player?.isChampion === true },
     ]
 };
 
@@ -398,8 +398,17 @@ function calculatePlayerStats(playerpseudo) {
     const earnedBadges = {};
     const badgeCounts = { bronze: 0, silver: 0, gold: 0, platinum: 0 };
     const statsForBadges = { totalGames, wins, bestElo, maxStreak };
+    
     for (const tier in ALL_BADGES) {
-        earnedBadges[tier] = ALL_BADGES[tier].filter(badge => badge.condition(statsForBadges, playerData));
+        earnedBadges[tier] = ALL_BADGES[tier].filter(badge => {
+            try {
+                return badge.condition(statsForBadges, playerData);
+            } catch(e) {
+                // ✅ Empêche un badge mal défini de bloquer tous les autres
+                console.warn(`⚠️ Erreur sur le badge "${badge.id}" pour ${playerpseudo} :`, e);
+                return false;
+            }
+        });
         badgeCounts[tier] = earnedBadges[tier].length;
     }
 
