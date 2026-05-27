@@ -157,6 +157,9 @@ const matches = [
   { "id": 107, "date": "2026-05-13", "player1": "La-plume-44", "player2": "Aegon", "result": "win" },
   { "id": 108, "date": "2026-05-13", "player1": "ÉlèveDuRoi", "player2": "Nika", "result": "win" },
   { "id": 109, "date": "2026-05-13", "player1": "YSF_93", "player2": "Moham", "result": "win" },
+  { "id": 110, "date": "2026-05-13", "player1": "Shadow", "player2": "La-plume-44", "result": "win" },
+  { "id": 111, "date": "2026-05-13", "player1": "Shadow", "player2": "ÉlèveDuRoi", "result": "win" },
+  { "id": 111, "date": "2026-05-13", "player1": "La-plume-44", "player2": "Shadow", "result": "win" },
 ];
 
 let joueurs = [];
